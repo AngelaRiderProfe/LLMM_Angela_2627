@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloque 6 · Estructura semántica y versiones | Guía de HTML</title>
+<meta name="description" content="Apuntes de HTML para el módulo de Lenguajes de marcas y sistemas de gestión de información (1.º DAM).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="topbar">
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button>
+  <a class="brand-mini" href="index.html">&lt;html&gt; LMSGI</a>
+</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html"><span class="brand-tag">&lt;html&gt;</span><span>Guía de HTML<br><small>LMSGI · 1.º DAM</small></span></a>
+    <nav aria-label="Bloques de la guía"><ol class="nav-list"><li><a href="index.html"><span class="nav-num nav-num--empty"></span><span>Inicio y entorno</span></a></li><li><a href="bloque-0.html"><span class="nav-num">0</span><span>Qué es HTML</span></a></li><li><a href="bloque-1.html"><span class="nav-num">1</span><span>Estructura y sintaxis</span></a></li><li><a href="bloque-2.html"><span class="nav-num">2</span><span>Texto con significado</span></a></li><li><a href="bloque-3.html"><span class="nav-num">3</span><span>Primer contacto con CSS</span></a></li><li><a href="bloque-4.html"><span class="nav-num">4</span><span>Enlaces, rutas y multimedia</span></a></li><li><a href="bloque-5.html"><span class="nav-num">5</span><span>Listas y tablas</span></a></li><li><a href="bloque-6.html" aria-current="page"><span class="nav-num">6</span><span>Semántica y versiones</span></a></li><li><a href="bloque-7.html"><span class="nav-num">7</span><span>Formularios</span></a></li><li><a href="bloque-8.html"><span class="nav-num">8</span><span>Gráficos y primer JavaScript</span></a></li><li><a href="chuleta.html"><span class="nav-num nav-num--empty"></span><span>Chuleta y referencias</span></a></li></ol></nav>
+    <p class="progress" id="progreso" hidden></p>
+  </aside>
+  <main id="contenido" class="main">
+    <header class="page-head"><p class="page-kicker">Bloque 6</p><h1>Estructura semántica y versiones</h1></header>
+    <div class="content-wrap">
+      <article class="content">
+        
+<p>Hasta ahora hemos marcado contenido suelto. En este bloque organizamos la página completa en zonas con significado (cabecera, menú, contenido, pie) y comparamos cómo se hacía antes y cómo se hace en HTML5.</p>
+<h3 id="61-elementos-de-bloque-y-en-línea">6.1 Elementos de bloque y en línea</h3>
+<p>Todo elemento se comporta por defecto de una de estas dos formas:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Bloque (<em>block</em>)</th>
+<th>En línea (<em>inline</em>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Empieza en línea nueva</td>
+<td>Sí</td>
+<td>No, sigue en la misma línea</td>
+</tr>
+<tr class="even">
+<td>Ancho</td>
+<td>Todo el disponible</td>
+<td>Solo lo que ocupa su contenido</td>
+</tr>
+<tr class="odd">
+<td>Puede contener</td>
+<td>Bloques y en línea</td>
+<td>Solo en línea y texto</td>
+</tr>
+<tr class="even">
+<td>Ejemplos</td>
+<td><code>p</code>, <code>h1</code>–<code>h6</code>, <code>ul</code>, <code>ol</code>, <code>li</code>, <code>table</code>, <code>div</code>, <code>form</code>, <code>header</code>, <code>section</code></td>
+<td><code>a</code>, <code>strong</code>, <code>em</code>, <code>span</code>, <code>img</code>, <code>code</code>, <code>abbr</code>, <code>input</code>, <code>label</code></td>
+</tr>
+</tbody>
+</table>
+<p>Compruébalo en DevTools: al pasar el ratón por un <code>p</code> se resalta toda la anchura; por un <code>strong</code>, solo la palabra. Con CSS se puede cambiar (<code>display: block</code> / <code>display: inline</code>).</p>
+<h3 id="62-contenedores-genéricos-div-y-span">6.2 Contenedores genéricos: <code>&lt;div&gt;</code> y <code>&lt;span&gt;</code></h3>
+<p>No tienen ningún significado; solo agrupan para poder dar estilo o manipular con JavaScript.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"tarjeta"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>DAM<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Duración: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"dato"</span><span class="p">&gt;</span>2000 horas<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></figure>
+<ul>
+<li><code>div</code>: contenedor de <strong>bloque</strong>.</li>
+<li><code>span</code>: contenedor <strong>en línea</strong>, para un trozo de texto.</li>
+</ul>
+<p>Usa <code>div</code> solo cuando ningún elemento semántico encaje.</p>
+<h3 id="63-elementos-semánticos-de-html5">6.3 Elementos semánticos de HTML5</h3>
+<p>Antes de HTML5 todo se maquetaba con <code>div</code> y clases (<code>&lt;div id="header"&gt;</code>). HTML5 añadió elementos que dicen qué es cada zona:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Significado</th>
+<th>Cuántos por página</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;header&gt;</code></td>
+<td>Cabecera de la página o de una sección: logo, título, menú</td>
+<td>Varios (uno por página, y otros en <code>article</code>)</td>
+</tr>
+<tr class="even">
+<td><code>&lt;nav&gt;</code></td>
+<td>Bloque de enlaces de navegación principal</td>
+<td>Varios, pero solo para menús importantes</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;main&gt;</code></td>
+<td>Contenido principal, único de esa página</td>
+<td><strong>Uno solo</strong></td>
+</tr>
+<tr class="even">
+<td><code>&lt;section&gt;</code></td>
+<td>Sección temática con su propio título</td>
+<td>Varios</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;article&gt;</code></td>
+<td>Contenido independiente que tendría sentido fuera de la página: noticia, entrada de blog, comentario</td>
+<td>Varios</td>
+</tr>
+<tr class="even">
+<td><code>&lt;aside&gt;</code></td>
+<td>Contenido relacionado pero secundario: barra lateral, publicidad, notas</td>
+<td>Varios</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;footer&gt;</code></td>
+<td>Pie de página o de sección: autor, copyright, enlaces legales</td>
+<td>Varios</td>
+</tr>
+<tr class="even">
+<td><code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code></td>
+<td>Ilustración con su leyenda</td>
+<td>Varios</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;time&gt;</code></td>
+<td>Fecha u hora legible por máquina: <code>&lt;time datetime="2026-11-09"&gt;9 de noviembre&lt;/time&gt;</code></td>
+<td>Varios</td>
+</tr>
+<tr class="even">
+<td><code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code></td>
+<td>Bloque desplegable</td>
+<td>Varios</td>
+</tr>
+</tbody>
+</table>
+<p><strong>¿<code>section</code> o <code>article</code>?</strong> Pregúntate: ¿podría publicarse este bloque solo, en otra web, y se entendería? Si sí, <code>article</code>. Si es una parte de algo más grande con su título, <code>section</code>.</p>
+<h3 id="64-estructura-típica-de-una-página">6.4 Estructura típica de una página</h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img/logo.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"IES Ejemplo"</span> <span class="na">width</span><span class="o">=</span><span class="s">"80"</span> <span class="na">height</span><span class="o">=</span><span class="s">"80"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Familia de Informática<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"index.html"</span><span class="p">&gt;</span>Inicio<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"ciclos.html"</span><span class="p">&gt;</span>Ciclos<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"contacto.html"</span><span class="p">&gt;</span>Contacto<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Noticias<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Abierto el plazo de matrícula<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">time</span> <span class="na">datetime</span><span class="o">=</span><span class="s">"2026-06-25"</span><span class="p">&gt;</span>25 de junio<span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Ya puedes solicitar plaza en los ciclos…<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">aside</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Enlaces de interés<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://www.todofp.es"</span><span class="p">&gt;</span>TodoFP<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+
+  <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="ni">&amp;copy;</span> 2026 IES Ejemplo<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Sin CSS la página se ve como una columna; los elementos semánticos no cambian el aspecto. La colocación en columnas se hará en la UT3 con <em>Flexbox</em> y <em>Grid</em>.</p>
+<p><strong>Ventajas de la semántica</strong>: los buscadores entienden mejor la página (SEO), los lectores de pantalla permiten saltar al <code>main</code> o al <code>nav</code>, y el código es más fácil de leer y mantener.</p>
+<h3 id="65-html-frente-a-xhtml">6.5 HTML frente a XHTML</h3>
+<p>XHTML es HTML reescrito con las reglas de XML. Lo estudiamos porque aún aparece en código antiguo y porque sus reglas son exactamente las de un <strong>documento XML bien formado</strong>, que veremos en la unidad de XML.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Regla</th>
+<th>HTML5 (permisivo)</th>
+<th>XHTML (estricto)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mayúsculas</td>
+<td><code>&lt;P&gt;</code> funciona</td>
+<td>Todo en minúsculas</td>
+</tr>
+<tr class="even">
+<td>Cierre de etiquetas</td>
+<td><code>&lt;p&gt;</code> o <code>&lt;li&gt;</code> pueden quedar sin cerrar</td>
+<td>Todas se cierran</td>
+</tr>
+<tr class="odd">
+<td>Elementos vacíos</td>
+<td><code>&lt;br&gt;</code></td>
+<td><code>&lt;br /&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Comillas en atributos</td>
+<td>Opcionales: <code>width=100</code></td>
+<td>Obligatorias</td>
+</tr>
+<tr class="odd">
+<td>Atributos booleanos</td>
+<td><code>&lt;input disabled&gt;</code></td>
+<td><code>&lt;input disabled="disabled" /&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Anidamiento</td>
+<td>El navegador corrige errores</td>
+<td>Un error impide mostrar la página (si se sirve como XML)</td>
+</tr>
+<tr class="odd">
+<td>Elemento raíz</td>
+<td><code>&lt;html lang="es"&gt;</code></td>
+<td><code>&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="cp">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"</span>
+<span class="cp">  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">"http://www.w3.org/1999/xhtml"</span> <span class="na">xml:lang</span><span class="o">=</span><span class="s">"es"</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">"Content-Type"</span> <span class="na">content</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Documento XHTML<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Línea uno<span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>Línea dos<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"logo.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Logo"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Aunque usemos HTML5, <strong>escribiremos siempre como si fuera XHTML</strong>: minúsculas, todo cerrado, comillas. Es más claro y evita errores.</p>
+<h3 id="66-accesibilidad-básica">6.6 Accesibilidad básica</h3>
+<p>Una web accesible puede usarla cualquier persona, también con discapacidad visual, motora o cognitiva. En España, las webs del sector público están obligadas por ley (RD 1112/2018) a cumplir las pautas WCAG.</p>
+<p>Lista de comprobación:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" data-chk="bloque-6.html-1"><code>lang</code> en <code>&lt;html&gt;</code>.</label></li>
+<li><label><input type="checkbox" data-chk="bloque-6.html-2">Todas las imágenes con <code>alt</code> adecuado (vacío si son decorativas).</label></li>
+<li><label><input type="checkbox" data-chk="bloque-6.html-3">Un <code>h1</code> y jerarquía de títulos sin saltos.</label></li>
+<li><label><input type="checkbox" data-chk="bloque-6.html-4">Enlaces con texto descriptivo (nada de «pincha aquí»).</label></li>
+<li><label><input type="checkbox" data-chk="bloque-6.html-5">Elementos semánticos (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>).</label></li>
+<li><label><input type="checkbox" data-chk="bloque-6.html-6">Tablas con <code>th</code>, <code>scope</code> y <code>caption</code>.</label></li>
+<li><label><input type="checkbox" data-chk="bloque-6.html-7">Formularios con <code>label</code> asociado a cada campo (bloque 7).</label></li>
+<li><label><input type="checkbox" data-chk="bloque-6.html-8">Contraste suficiente entre texto y fondo.</label></li>
+<li><label><input type="checkbox" data-chk="bloque-6.html-9">Se puede recorrer todo con el teclado (tecla Tab).</label></li>
+</ul>
+<h3 id="67-diseño-adaptable-responsive">6.7 Diseño adaptable (<em>responsive</em>)</h3>
+<p>Una página <em>responsive</em> se adapta al tamaño de la pantalla. Desde HTML se prepara así:</p>
+<ol type="1">
+<li>La meta viewport (obligatoria):</li>
+</ol>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="p">&gt;</span>
+</code></pre></figure>
+<ol start="2" type="1">
+<li>Imágenes que no desborden: en CSS, <code>img { max-width: 100%; height: auto; }</code>.</li>
+<li>Versiones de imagen según tamaño con <code>&lt;picture&gt;</code> o <code>srcset</code> (bloque 4).</li>
+<li>El resto (columnas que se apilan en el móvil) se hace con <em>media queries</em> de CSS en la UT3.</li>
+</ol>
+<p>Para probarlo: DevTools › icono de móvil (Ctrl+Shift+M) y elige un dispositivo.</p>
+<h3 id="68-guía-de-estilo-del-código">6.8 Guía de estilo del código</h3>
+<ul>
+<li>Declara siempre <code>&lt;!DOCTYPE html&gt;</code>, <code>lang</code> y <code>charset</code>.</li>
+<li>Minúsculas en etiquetas y atributos; comillas dobles.</li>
+<li>Cierra todos los elementos.</li>
+<li>Sangría de 2 espacios por nivel; sin espacios alrededor del <code>=</code>.</li>
+<li>Nombres de archivo en minúsculas, sin espacios ni tildes.</li>
+<li>Una línea en blanco entre bloques grandes para leerlo mejor.</li>
+</ul>
+<section class="ejercicios"><h3 id="ejercicios-del-bloque-6">Ejercicios del bloque 6</h3>
+<h4 class="ej" id="e21"><span class="ej-num">E21</span> Bloque o línea<label class="done"><input type="checkbox" data-ej="E21"> Hecho</label></h4>
+<ol type="1">
+<li>Abre tu biografía (E06) con DevTools.</li>
+<li>Haz una tabla con 15 elementos que hayas usado y clasifícalos en bloque o en línea, comprobándolo con el resaltado.</li>
+<li>Envuelve dos párrafos en un <code>div class="recuadro"</code> con borde, y una palabra en un <code>span</code> con color.</li>
+</ol>
+<h4 class="ej" id="e22"><span class="ej-num">E22</span> De sopa de divs a HTML5<label class="done"><input type="checkbox" data-ej="E22"> Hecho</label></h4>
+<ol type="1">
+<li>Tu profesor te dará <code>e22-divs.html</code>, una página hecha solo con <code>div</code> como <code>&lt;div id="cabecera"&gt;</code>, <code>&lt;div id="menu"&gt;</code>, <code>&lt;div class="noticia"&gt;</code>, <code>&lt;div id="pie"&gt;</code>.</li>
+<li>Dibuja en papel las zonas de la página y escribe al lado qué elemento semántico le corresponde.</li>
+<li>Reescríbela como <code>e22-semantica.html</code> sustituyendo cada <code>div</code> por el elemento adecuado. Deja <code>div</code> solo donde no haya alternativa.</li>
+<li>Valida y comprueba con la opción <em>Outline</em> que la estructura es lógica.</li>
+</ol>
+<h4 class="ej" id="e23"><span class="ej-num">E23</span> De HTML a XHTML<label class="done"><input type="checkbox" data-ej="E23"> Hecho</label></h4>
+<ol type="1">
+<li>Toma <code>e04-head.html</code> y guárdalo como <code>e23-xhtml.html</code>.</li>
+<li>Cambia el DOCTYPE y el elemento <code>html</code> por los de XHTML 1.0 Strict (6.5).</li>
+<li>Revisa una a una las reglas de la tabla de 6.5 y corrige todo lo necesario.</li>
+<li>Valida. Después quita el cierre de un <code>&lt;p&gt;</code>, valida otra vez y compara con lo que pasa en HTML5.</li>
+</ol>
+<h4 class="ej" id="e24"><span class="ej-num">E24</span> Revisión de accesibilidad<label class="done"><input type="checkbox" data-ej="E24"> Hecho</label></h4>
+<ol type="1">
+<li>Pasa la lista de 6.6 a tu mini-sitio de E15–E17 y corrige lo que falle.</li>
+<li>Recorre una página solo con el teclado (Tab y Enter).</li>
+<li>Comprueba con DevTools en modo móvil que las imágenes no se salen de la pantalla.</li>
+</ol>
+</section>
+        
+        <nav class="pager" aria-label="Paginación"><a class="pager-prev" href="bloque-5.html"><small>Anterior</small>Listas y tablas</a><a class="pager-next" href="bloque-7.html"><small>Siguiente</small>Formularios</a></nav>
+      </article>
+      <nav class="toc" aria-label="En esta página"><p class="toc-title">En esta página</p><ul><li><a href="#61-elementos-de-bloque-y-en-línea">6.1 Elementos de bloque y en línea</a></li><li><a href="#62-contenedores-genéricos-div-y-span">6.2 Contenedores genéricos: &lt;div&gt; y &lt;span&gt;</a></li><li><a href="#63-elementos-semánticos-de-html5">6.3 Elementos semánticos de HTML5</a></li><li><a href="#64-estructura-típica-de-una-página">6.4 Estructura típica de una página</a></li><li><a href="#65-html-frente-a-xhtml">6.5 HTML frente a XHTML</a></li><li><a href="#66-accesibilidad-básica">6.6 Accesibilidad básica</a></li><li><a href="#67-diseño-adaptable-responsive">6.7 Diseño adaptable (responsive)</a></li><li><a href="#68-guía-de-estilo-del-código">6.8 Guía de estilo del código</a></li><li><a href="#ejercicios-del-bloque-6">Ejercicios del bloque 6</a></li></ul></nav>
+    </div>
+    <footer class="site-foot">
+      <p>Apuntes del módulo Lenguajes de marcas y sistemas de gestión de información, 1.º DAM. Contenidos organizados a partir del <a href="https://www.w3schools.com/html/default.asp">tutorial de HTML de W3Schools</a>.</p>
+    </footer>
+  </main>
+</div>
+<dialog class="try" id="try">
+  <div class="try-head">
+    <h2>Probar el código</h2>
+    <div class="try-actions"><button type="button" id="try-reset">Restaurar</button><button type="button" id="try-close">Cerrar</button></div>
+  </div>
+  <div class="try-body">
+    <textarea id="try-src" spellcheck="false" aria-label="Código HTML editable"></textarea>
+    <iframe id="try-out" title="Resultado" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+  </div>
+</dialog>
+</body>
+</html>

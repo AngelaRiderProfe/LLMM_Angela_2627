@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloque 4 · Enlaces, rutas, imágenes y multimedia | Guía de HTML</title>
+<meta name="description" content="Apuntes de HTML para el módulo de Lenguajes de marcas y sistemas de gestión de información (1.º DAM).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="topbar">
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button>
+  <a class="brand-mini" href="index.html">&lt;html&gt; LMSGI</a>
+</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html"><span class="brand-tag">&lt;html&gt;</span><span>Guía de HTML<br><small>LMSGI · 1.º DAM</small></span></a>
+    <nav aria-label="Bloques de la guía"><ol class="nav-list"><li><a href="index.html"><span class="nav-num nav-num--empty"></span><span>Inicio y entorno</span></a></li><li><a href="bloque-0.html"><span class="nav-num">0</span><span>Qué es HTML</span></a></li><li><a href="bloque-1.html"><span class="nav-num">1</span><span>Estructura y sintaxis</span></a></li><li><a href="bloque-2.html"><span class="nav-num">2</span><span>Texto con significado</span></a></li><li><a href="bloque-3.html"><span class="nav-num">3</span><span>Primer contacto con CSS</span></a></li><li><a href="bloque-4.html" aria-current="page"><span class="nav-num">4</span><span>Enlaces, rutas y multimedia</span></a></li><li><a href="bloque-5.html"><span class="nav-num">5</span><span>Listas y tablas</span></a></li><li><a href="bloque-6.html"><span class="nav-num">6</span><span>Semántica y versiones</span></a></li><li><a href="bloque-7.html"><span class="nav-num">7</span><span>Formularios</span></a></li><li><a href="bloque-8.html"><span class="nav-num">8</span><span>Gráficos y primer JavaScript</span></a></li><li><a href="chuleta.html"><span class="nav-num nav-num--empty"></span><span>Chuleta y referencias</span></a></li></ol></nav>
+    <p class="progress" id="progreso" hidden></p>
+  </aside>
+  <main id="contenido" class="main">
+    <header class="page-head"><p class="page-kicker">Bloque 4</p><h1>Enlaces, rutas, imágenes y multimedia</h1></header>
+    <div class="content-wrap">
+      <article class="content">
+        
+<p>Los enlaces son la «H» de HTML (<em>HyperText</em>): permiten saltar de un documento a otro. Para que funcionen, y para que funcionen las imágenes, hay que dominar las <strong>rutas</strong>.</p>
+<h3 id="41-rutas-de-archivos">4.1 Rutas de archivos</h3>
+<p>Una ruta indica dónde está un archivo. Partimos de esta estructura:</p>
+<figure class="code" data-lang="text"><div class="code-bar"><div class="code-tools"><button type="button" class="btn-copy">Copiar</button></div></div><pre><code>proyecto/
+├── index.html
+├── contacto.html
+├── css/
+│   └── estilos.css
+├── img/
+│   └── logo.png
+└── ciclos/
+    └── dam.html</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Ejemplo desde <code>ciclos/dam.html</code></th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Relativa, misma carpeta</td>
+<td><code>otro.html</code></td>
+<td>Archivo junto al actual</td>
+</tr>
+<tr class="even">
+<td>Relativa, subcarpeta</td>
+<td><code>fotos/aula.jpg</code></td>
+<td>Entra en la carpeta <code>fotos</code></td>
+</tr>
+<tr class="odd">
+<td>Relativa, carpeta padre</td>
+<td><code>../index.html</code></td>
+<td><code>..</code> sube un nivel</td>
+</tr>
+<tr class="even">
+<td>Relativa, padre + otra carpeta</td>
+<td><code>../img/logo.png</code></td>
+<td>Sube y entra en <code>img</code></td>
+</tr>
+<tr class="odd">
+<td>Relativa a la raíz del sitio</td>
+<td><code>/img/logo.png</code></td>
+<td>Desde la raíz del servidor (con Live Server funciona; abriendo el archivo con doble clic, no)</td>
+</tr>
+<tr class="even">
+<td>Absoluta</td>
+<td><code>https://www.w3.org/logo.png</code></td>
+<td>Dirección completa en Internet</td>
+</tr>
+</tbody>
+</table>
+<p>Regla práctica: <strong>dentro de tu sitio usa rutas relativas</strong>, así la carpeta funciona aunque la muevas o la subas a un servidor. Evita espacios, tildes y mayúsculas en nombres de archivos: en servidores Linux <code>Logo.png</code> y <code>logo.png</code> son archivos distintos.</p>
+<h3 id="42-enlaces-a">4.2 Enlaces: <code>&lt;a&gt;</code></h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"contacto.html"</span><span class="p">&gt;</span>Contacto<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Atributo</th>
+<th>Para qué sirve</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>href</code></td>
+<td>Destino del enlace (obligatorio para que sea enlace)</td>
+<td><code>href="dam.html"</code></td>
+</tr>
+<tr class="even">
+<td><code>target</code></td>
+<td>Dónde se abre. <code>_self</code> (por defecto, misma pestaña) o <code>_blank</code> (pestaña nueva)</td>
+<td><code>target="_blank"</code></td>
+</tr>
+<tr class="odd">
+<td><code>rel</code></td>
+<td>Relación con el destino. Con <code>_blank</code> se recomienda <code>noopener</code> por seguridad</td>
+<td><code>rel="noopener"</code></td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>Texto de ayuda al pasar el ratón</td>
+<td><code>title="Abre la web oficial"</code></td>
+</tr>
+<tr class="odd">
+<td><code>download</code></td>
+<td>Descarga el archivo en lugar de abrirlo</td>
+<td><code>download="apuntes.pdf"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Tipos de destino:</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="cm">&lt;!-- A otra página de mi sitio --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"ciclos/dam.html"</span><span class="p">&gt;</span>Ciclo DAM<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- A una web externa, en pestaña nueva --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://www.todofp.es"</span> <span class="na">target</span><span class="o">=</span><span class="s">"_blank"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"noopener"</span><span class="p">&gt;</span>TodoFP<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- A una sección de la misma página (ancla): destino con id --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"#horario"</span><span class="p">&gt;</span>Ir al horario<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+...
+<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">"horario"</span><span class="p">&gt;</span>Horario<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- A una sección de otra página --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"ciclos/dam.html#modulos"</span><span class="p">&gt;</span>Módulos de DAM<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Correo y teléfono --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"mailto:secretaria@ejemplo.es?subject=Matrícula"</span><span class="p">&gt;</span>Escribir a secretaría<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"tel:+34910000000"</span><span class="p">&gt;</span>Llamar<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Imagen como enlace --&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"index.html"</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img/logo.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Inicio"</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>El texto del enlace debe decir a dónde lleva: «Descargar el calendario», nunca «pincha aquí» (un lector de pantalla puede leer solo la lista de enlaces).</p>
+<h3 id="43-imágenes-img">4.3 Imágenes: <code>&lt;img&gt;</code></h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img/aula.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Alumnos trabajando en el aula de informática"</span> <span class="na">width</span><span class="o">=</span><span class="s">"600"</span> <span class="na">height</span><span class="o">=</span><span class="s">"400"</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Atributo</th>
+<th>Para qué sirve</th>
+<th>¿Obligatorio?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>src</code></td>
+<td>Ruta de la imagen</td>
+<td>Sí</td>
+</tr>
+<tr class="even">
+<td><code>alt</code></td>
+<td>Texto alternativo: se lee si la imagen no carga o con lector de pantalla. Describe lo que aporta la imagen; si es decorativa, <code>alt=""</code></td>
+<td>Sí (el validador da error)</td>
+</tr>
+<tr class="odd">
+<td><code>width</code> / <code>height</code></td>
+<td>Tamaño en píxeles. Ponerlos evita que la página «salte» mientras carga</td>
+<td>Recomendado</td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>Texto al pasar el ratón</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td><code>loading</code></td>
+<td><code>lazy</code>: no la carga hasta que el usuario se acerca a ella</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Formatos: <strong>JPG</strong> para fotos, <strong>PNG</strong> para imágenes con transparencia o texto, <strong>SVG</strong> para logos e iconos (vectorial, no pierde calidad), <strong>WebP</strong> para fotos más ligeras, <strong>GIF</strong> para animaciones sencillas.</p>
+<p><strong>Imagen con pie de foto</strong>: <code>figure</code> agrupa un contenido ilustrativo y <code>figcaption</code> es su leyenda.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img/eniac.jpg"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Ordenador ENIAC ocupando una sala entera"</span> <span class="na">width</span><span class="o">=</span><span class="s">"500"</span> <span class="na">height</span><span class="o">=</span><span class="s">"300"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>ENIAC (1946), uno de los primeros ordenadores.<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p><strong>Imágenes adaptables</strong>: <code>&lt;picture&gt;</code> permite dar distintas versiones según el ancho de pantalla.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">picture</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">media</span><span class="o">=</span><span class="s">"(max-width: 600px)"</span> <span class="na">srcset</span><span class="o">=</span><span class="s">"img/logo-peque.png"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"img/logo.png"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"Logotipo del instituto"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">picture</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p><strong>Mapas de imagen</strong> (<code>&lt;map&gt;</code> + <code>&lt;area&gt;</code>) permiten zonas clicables dentro de una imagen; hoy se usan poco.</p>
+<h3 id="44-favicon">4.4 Favicon</h3>
+<p>Es el icono de la pestaña. Se enlaza en el <code>head</code>:</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"icon"</span> <span class="na">type</span><span class="o">=</span><span class="s">"image/png"</span> <span class="na">href</span><span class="o">=</span><span class="s">"img/favicon.png"</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Usa una imagen cuadrada (32×32 o 48×48 píxeles). Si no cambia, borra la caché del navegador (Ctrl+F5).</p>
+<h3 id="45-vídeo-y-audio">4.5 Vídeo y audio</h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">video</span> <span class="na">width</span><span class="o">=</span><span class="s">"640"</span> <span class="na">height</span><span class="o">=</span><span class="s">"360"</span> <span class="na">controls</span> <span class="na">poster</span><span class="o">=</span><span class="s">"img/portada.jpg"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">"media/presentacion.mp4"</span> <span class="na">type</span><span class="o">=</span><span class="s">"video/mp4"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">"media/presentacion.webm"</span> <span class="na">type</span><span class="o">=</span><span class="s">"video/webm"</span><span class="p">&gt;</span>
+  Tu navegador no admite vídeo.
+<span class="p">&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">audio</span> <span class="na">controls</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">"media/podcast.mp3"</span> <span class="na">type</span><span class="o">=</span><span class="s">"audio/mpeg"</span><span class="p">&gt;</span>
+  Tu navegador no admite audio.
+<span class="p">&lt;/</span><span class="nt">audio</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Se ponen varios <code>&lt;source&gt;</code> para que el navegador use el primer formato que entienda; el texto final solo se ve si no entiende ninguno.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Atributo</th>
+<th><code>video</code></th>
+<th><code>audio</code></th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>controls</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Muestra los botones de reproducir, volumen…</td>
+</tr>
+<tr class="even">
+<td><code>autoplay</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Empieza solo. Los navegadores lo bloquean salvo con <code>muted</code></td>
+</tr>
+<tr class="odd">
+<td><code>muted</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sin sonido</td>
+</tr>
+<tr class="even">
+<td><code>loop</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Se repite</td>
+</tr>
+<tr class="odd">
+<td><code>poster</code></td>
+<td>Sí</td>
+<td>No</td>
+<td>Imagen antes de reproducir</td>
+</tr>
+<tr class="even">
+<td><code>width</code> / <code>height</code></td>
+<td>Sí</td>
+<td>No</td>
+<td>Tamaño</td>
+</tr>
+</tbody>
+</table>
+<p>Formatos: vídeo MP4 (H.264) y WebM; audio MP3, OGG y WAV.</p>
+<h3 id="46-contenido-incrustado-iframe">4.6 Contenido incrustado: <code>&lt;iframe&gt;</code></h3>
+<p>Un <code>iframe</code> muestra otra página web dentro de la tuya. Es como YouTube o Google Maps permiten insertar su contenido (botón <em>Compartir › Insertar</em>).</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">"560"</span> <span class="na">height</span><span class="o">=</span><span class="s">"315"</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">"https://www.youtube.com/embed/ID_DEL_VIDEO"</span>
+  <span class="na">title</span><span class="o">=</span><span class="s">"Vídeo de presentación del ciclo"</span>
+  <span class="na">allowfullscreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Atributo</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>src</code></td>
+<td>URL de la página que se incrusta</td>
+</tr>
+<tr class="even">
+<td><code>width</code> / <code>height</code></td>
+<td>Tamaño del marco</td>
+</tr>
+<tr class="odd">
+<td><code>title</code></td>
+<td>Descripción para accesibilidad (el validador lo recomienda)</td>
+</tr>
+<tr class="even">
+<td><code>name</code></td>
+<td>Nombre del marco: un enlace con <code>target="nombre"</code> se abre dentro de él</td>
+</tr>
+<tr class="odd">
+<td><code>allowfullscreen</code></td>
+<td>Permite pantalla completa</td>
+</tr>
+<tr class="even">
+<td><code>loading="lazy"</code></td>
+<td>Carga diferida</td>
+</tr>
+</tbody>
+</table>
+<p>YouTube usa la URL <code>/embed/ID</code>, no la normal <code>/watch?v=ID</code>. Muchas webs prohíben ser incrustadas: si sale en blanco, no es tu error.</p>
+<section class="callout errores"><h3 id="47-errores-típicos">4.7 Errores típicos</h3>
+<ul>
+<li><code>src="C:\Users\Ana\Escritorio\foto.jpg"</code>: ruta de tu ordenador que no funcionará en ningún otro.</li>
+<li>Olvidar <code>alt</code> en una imagen.</li>
+<li>Barras invertidas (<code>img\logo.png</code>): en la web siempre <code>/</code>.</li>
+<li>Ancla sin <code>#</code>: <code>href="horario"</code> busca un archivo llamado <em>horario</em>.</li>
+<li><code>target="blank"</code> sin guion bajo: crea una pestaña llamada <em>blank</em>.</li>
+</ul>
+</section><section class="ejercicios"><h3 id="ejercicios-del-bloque-4">Ejercicios del bloque 4</h3>
+<h4 class="ej" id="e14"><span class="ej-num">E14</span> Rutas en papel<label class="done"><input type="checkbox" data-ej="E14"> Hecho</label></h4>
+<ol type="1">
+<li>Copia el árbol de 4.1 en una hoja.</li>
+<li>Escribe la ruta relativa para ir: de <code>index.html</code> a <code>logo.png</code>; de <code>dam.html</code> a <code>index.html</code>; de <code>dam.html</code> a <code>estilos.css</code>; de <code>contacto.html</code> a <code>dam.html</code>; de <code>dam.html</code> a una web externa.</li>
+<li>Crea esa estructura en <code>ejercicios/e14/</code> y comprueba cada ruta con un enlace real.</li>
+</ol>
+<h4 class="ej" id="e15"><span class="ej-num">E15</span> Mini-sitio de 3 páginas<label class="done"><input type="checkbox" data-ej="E15"> Hecho</label></h4>
+<ol type="1">
+<li>En <code>ejercicios/e15/</code> crea <code>index.html</code>, <code>ciclos.html</code> y <code>contacto.html</code>.</li>
+<li>Pon en las tres el mismo menú con enlaces a las tres páginas.</li>
+<li>En <code>ciclos.html</code> crea tres secciones con <code>id</code> y un índice al principio con enlaces internos (<code>#</code>). Añade al final un enlace «Volver arriba».</li>
+<li>Añade un enlace externo que se abra en pestaña nueva con <code>rel="noopener"</code>, un <code>mailto:</code> con asunto y un <code>tel:</code>.</li>
+</ol>
+<h4 class="ej" id="e16"><span class="ej-num">E16</span> Galería<label class="done"><input type="checkbox" data-ej="E16"> Hecho</label></h4>
+<ol type="1">
+<li>Crea <code>img/</code> dentro de <code>e15</code> y añade 3 imágenes (con licencia libre: Pixabay, Unsplash, Wikimedia).</li>
+<li>Crea <code>galeria.html</code> con las tres imágenes dentro de <code>figure</code> + <code>figcaption</code>, todas con <code>alt</code> descriptivo, <code>width</code> y <code>height</code>.</li>
+<li>Haz que el logotipo de la cabecera sea un enlace a <code>index.html</code>.</li>
+<li>Añade un favicon a las cuatro páginas.</li>
+</ol>
+<h4 class="ej" id="e17"><span class="ej-num">E17</span> Multimedia<label class="done"><input type="checkbox" data-ej="E17"> Hecho</label></h4>
+<ol type="1">
+<li>Crea <code>multimedia.html</code> con un <code>video</code> (<code>controls</code>, <code>poster</code>, dos <code>source</code>) y un <code>audio</code>.</li>
+<li>Inserta un vídeo de YouTube y un mapa de Google Maps de tu instituto con <code>iframe</code> (copia el código de <em>Compartir › Insertar</em> y añádele <code>title</code>).</li>
+<li>Prueba <code>autoplay</code> con y sin <code>muted</code> y explica en un comentario qué ocurre.</li>
+</ol>
+</section>
+        
+        <nav class="pager" aria-label="Paginación"><a class="pager-prev" href="bloque-3.html"><small>Anterior</small>Primer contacto con CSS</a><a class="pager-next" href="bloque-5.html"><small>Siguiente</small>Listas y tablas</a></nav>
+      </article>
+      <nav class="toc" aria-label="En esta página"><p class="toc-title">En esta página</p><ul><li><a href="#41-rutas-de-archivos">4.1 Rutas de archivos</a></li><li><a href="#42-enlaces-a">4.2 Enlaces: &lt;a&gt;</a></li><li><a href="#43-imágenes-img">4.3 Imágenes: &lt;img&gt;</a></li><li><a href="#44-favicon">4.4 Favicon</a></li><li><a href="#45-vídeo-y-audio">4.5 Vídeo y audio</a></li><li><a href="#46-contenido-incrustado-iframe">4.6 Contenido incrustado: &lt;iframe&gt;</a></li><li><a href="#47-errores-típicos">4.7 Errores típicos</a></li><li><a href="#ejercicios-del-bloque-4">Ejercicios del bloque 4</a></li></ul></nav>
+    </div>
+    <footer class="site-foot">
+      <p>Apuntes del módulo Lenguajes de marcas y sistemas de gestión de información, 1.º DAM. Contenidos organizados a partir del <a href="https://www.w3schools.com/html/default.asp">tutorial de HTML de W3Schools</a>.</p>
+    </footer>
+  </main>
+</div>
+<dialog class="try" id="try">
+  <div class="try-head">
+    <h2>Probar el código</h2>
+    <div class="try-actions"><button type="button" id="try-reset">Restaurar</button><button type="button" id="try-close">Cerrar</button></div>
+  </div>
+  <div class="try-body">
+    <textarea id="try-src" spellcheck="false" aria-label="Código HTML editable"></textarea>
+    <iframe id="try-out" title="Resultado" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+  </div>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloque 1 · Estructura y sintaxis | Guía de HTML</title>
+<meta name="description" content="Apuntes de HTML para el módulo de Lenguajes de marcas y sistemas de gestión de información (1.º DAM).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="topbar">
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button>
+  <a class="brand-mini" href="index.html">&lt;html&gt; LMSGI</a>
+</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html"><span class="brand-tag">&lt;html&gt;</span><span>Guía de HTML<br><small>LMSGI · 1.º DAM</small></span></a>
+    <nav aria-label="Bloques de la guía"><ol class="nav-list"><li><a href="index.html"><span class="nav-num nav-num--empty"></span><span>Inicio y entorno</span></a></li><li><a href="bloque-0.html"><span class="nav-num">0</span><span>Qué es HTML</span></a></li><li><a href="bloque-1.html" aria-current="page"><span class="nav-num">1</span><span>Estructura y sintaxis</span></a></li><li><a href="bloque-2.html"><span class="nav-num">2</span><span>Texto con significado</span></a></li><li><a href="bloque-3.html"><span class="nav-num">3</span><span>Primer contacto con CSS</span></a></li><li><a href="bloque-4.html"><span class="nav-num">4</span><span>Enlaces, rutas y multimedia</span></a></li><li><a href="bloque-5.html"><span class="nav-num">5</span><span>Listas y tablas</span></a></li><li><a href="bloque-6.html"><span class="nav-num">6</span><span>Semántica y versiones</span></a></li><li><a href="bloque-7.html"><span class="nav-num">7</span><span>Formularios</span></a></li><li><a href="bloque-8.html"><span class="nav-num">8</span><span>Gráficos y primer JavaScript</span></a></li><li><a href="chuleta.html"><span class="nav-num nav-num--empty"></span><span>Chuleta y referencias</span></a></li></ol></nav>
+    <p class="progress" id="progreso" hidden></p>
+  </aside>
+  <main id="contenido" class="main">
+    <header class="page-head"><p class="page-kicker">Bloque 1</p><h1>Estructura y sintaxis</h1></header>
+    <div class="content-wrap">
+      <article class="content">
+        
+<p>Este bloque es la base de todo lo demás: cómo se escribe un elemento, cómo se le añaden atributos y cuál es el esqueleto obligatorio de cualquier página.</p>
+<h3 id="11-anatomía-de-un-elemento">1.1 Anatomía de un elemento</h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"https://www.w3.org"</span><span class="p">&gt;</span>Web del W3C<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="cm">&lt;!-- │   │      │              │            └─ etiqueta de cierre --&gt;</span>
+<span class="cm">&lt;!-- │   │      │              └─ contenido --&gt;</span>
+<span class="cm">&lt;!-- │   │      └─ valor del atributo (entre comillas) --&gt;</span>
+<span class="cm">&lt;!-- │   └─ nombre del atributo --&gt;</span>
+<span class="cm">&lt;!-- └─ etiqueta de apertura --&gt;</span>
+</code></pre></figure>
+<ul>
+<li><strong>Etiqueta</strong>: la marca en sí, <code>&lt;a&gt;</code> o <code>&lt;/a&gt;</code>.</li>
+<li><strong>Elemento</strong>: todo el conjunto, desde la apertura hasta el cierre, incluido el contenido.</li>
+<li><strong>Atributo</strong>: información extra que se escribe <strong>siempre en la etiqueta de apertura</strong>, con la forma <code>nombre="valor"</code>.</li>
+</ul>
+<p><strong>Elementos vacíos</strong>. Algunos elementos no tienen contenido y por tanto no tienen etiqueta de cierre: <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;input&gt;</code>. En HTML5 se escriben <code>&lt;br&gt;</code>; la forma <code>&lt;br /&gt;</code> (heredada de XHTML) también es válida.</p>
+<h3 id="12-reglas-de-sintaxis">1.2 Reglas de sintaxis</h3>
+<ol type="1">
+<li><strong>Anidamiento correcto</strong>: lo último que se abre es lo primero que se cierra.</li>
+</ol>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="cm">&lt;!-- Correcto --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>muy importante<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Incorrecto: se cierra p antes que strong --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Esto es <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>muy importante.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+</code></pre></figure>
+<ol start="2" type="1">
+<li><strong>Minúsculas</strong>: HTML no distingue mayúsculas, pero la guía de estilo (y XHTML) exige minúsculas.</li>
+<li><strong>Comillas dobles</strong> en los valores de atributos, siempre.</li>
+<li><strong>Atributos booleanos</strong>: basta con escribir el nombre (<code>&lt;input required&gt;</code>). En XHTML se escribe <code>required="required"</code>.</li>
+<li><strong>Espacios en blanco</strong>: el navegador junta varios espacios y saltos de línea en uno solo. Usa la sangría (2 espacios) para que el código sea legible, no para dar formato a la página.</li>
+</ol>
+<h3 id="13-el-esqueleto-de-un-documento-html5">1.3 El esqueleto de un documento HTML5</h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"es"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"UTF-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mi primera página<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hola mundo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>El documento forma un <strong>árbol</strong>: <code>html</code> es la raíz y tiene dos hijos, <code>head</code> y <code>body</code>. Este árbol es lo que después manipularemos con JavaScript (el DOM).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Para qué sirve</th>
+<th>Atributos importantes</th>
+<th>¿Obligatorio?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;!DOCTYPE html&gt;</code></td>
+<td>Indica que el documento es HTML5. No es una etiqueta, es una declaración</td>
+<td>—</td>
+<td>Sí, primera línea</td>
+</tr>
+<tr class="even">
+<td><code>&lt;html&gt;</code></td>
+<td>Elemento raíz: contiene todo lo demás</td>
+<td><code>lang</code> (idioma: <code>es</code>, <code>en</code>, <code>ca</code>…)</td>
+<td>Sí</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;head&gt;</code></td>
+<td>Información <em>sobre</em> la página (metadatos). No se muestra</td>
+<td>—</td>
+<td>Sí</td>
+</tr>
+<tr class="even">
+<td><code>&lt;meta&gt;</code></td>
+<td>Metadatos concretos</td>
+<td><code>charset</code>, <code>name</code> + <code>content</code></td>
+<td><code>charset</code> sí</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;title&gt;</code></td>
+<td>Título de la pestaña, de los favoritos y de los resultados de Google</td>
+<td>—</td>
+<td>Sí (el validador da error sin él)</td>
+</tr>
+<tr class="even">
+<td><code>&lt;link&gt;</code></td>
+<td>Enlaza recursos externos: CSS, favicon</td>
+<td><code>rel</code>, <code>href</code></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;style&gt;</code></td>
+<td>CSS dentro de la página</td>
+<td>—</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td><code>&lt;script&gt;</code></td>
+<td>Código JavaScript</td>
+<td><code>src</code>, <code>defer</code></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;body&gt;</code></td>
+<td>Todo el contenido visible</td>
+<td>—</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-las-etiquetas-meta-más-usadas">1.4 Las etiquetas meta más usadas</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Código</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+<td>Codificación de caracteres. Sin ella, las tildes y la ñ pueden verse mal. Debe ir la primera dentro de <code>head</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></td>
+<td>Hace que la página se adapte al ancho del móvil</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;meta name="description" content="…"&gt;</code></td>
+<td>Resumen de la página que muestran los buscadores</td>
+</tr>
+<tr class="even">
+<td><code>&lt;meta name="author" content="…"&gt;</code></td>
+<td>Autor del documento</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;meta name="keywords" content="…"&gt;</code></td>
+<td>Palabras clave (hoy los buscadores casi no las usan)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15-atributos-globales">1.5 Atributos globales</h3>
+<p>Se pueden usar en <strong>cualquier</strong> elemento del <code>body</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Atributo</th>
+<th>Para qué sirve</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id</code></td>
+<td>Identificador único en la página</td>
+<td><code>&lt;section id="contacto"&gt;</code></td>
+</tr>
+<tr class="even">
+<td><code>class</code></td>
+<td>Una o varias clases para agrupar elementos y darles estilo</td>
+<td><code>&lt;p class="aviso importante"&gt;</code></td>
+</tr>
+<tr class="odd">
+<td><code>style</code></td>
+<td>CSS en línea</td>
+<td><code>&lt;p style="color: red;"&gt;</code></td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>Texto que aparece al pasar el ratón</td>
+<td><code>&lt;abbr title="Formación Profesional"&gt;FP&lt;/abbr&gt;</code></td>
+</tr>
+<tr class="odd">
+<td><code>lang</code></td>
+<td>Idioma de ese fragmento</td>
+<td><code>&lt;p lang="en"&gt;Hello&lt;/p&gt;</code></td>
+</tr>
+<tr class="even">
+<td><code>hidden</code></td>
+<td>Oculta el elemento</td>
+<td><code>&lt;p hidden&gt;No se ve&lt;/p&gt;</code></td>
+</tr>
+<tr class="odd">
+<td><code>data-*</code></td>
+<td>Datos propios para JavaScript</td>
+<td><code>&lt;li data-precio="20"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="16-comentarios">1.6 Comentarios</h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="cm">&lt;!-- Esto es un comentario: el navegador lo ignora --&gt;</span>
+<span class="cm">&lt;!--</span>
+<span class="cm">  Autor: Ana Pérez</span>
+<span class="cm">  Fecha: 10/11/2026</span>
+<span class="cm">  Ejercicio: E02</span>
+<span class="cm">--&gt;</span>
+</code></pre></figure>
+<p>Sirven para documentar el código y para «desactivar» temporalmente un trozo. Ojo: se ven con Ctrl+U, así que nunca escribas contraseñas ni datos privados en ellos.</p>
+<section class="callout errores"><h3 id="17-errores-típicos">1.7 Errores típicos</h3>
+<ul>
+<li>Olvidar el <code>&lt;title&gt;</code>: el validador da error.</li>
+<li>Poner contenido visible dentro de <code>&lt;head&gt;</code>.</li>
+<li>Cerrar en el orden equivocado (ver 1.2).</li>
+<li>Usar comillas tipográficas (“ ”) copiadas de Word en lugar de comillas rectas (").</li>
+<li>Escribir el atributo en la etiqueta de cierre: <code>&lt;/a href="…"&gt;</code>.</li>
+</ul>
+</section><section class="ejercicios"><h3 id="ejercicios-del-bloque-1">Ejercicios del bloque 1</h3>
+<h4 class="ej" id="e02"><span class="ej-num">E02</span> Esqueleto a mano<label class="done"><input type="checkbox" data-ej="E02"> Hecho</label></h4>
+<ol type="1">
+<li>Crea <code>e02-esqueleto.html</code>. <strong>No uses</strong> el atajo <code>!</code> de VS Code.</li>
+<li>Escribe el esqueleto de 1.3 línea a línea, con sangría de 2 espacios.</li>
+<li>Pon como título tu nombre y en el <code>body</code> un <code>h1</code> con el nombre del ciclo.</li>
+<li>En una hoja, dibuja el árbol del documento (html → head/body → …).</li>
+<li>Valida. Después borra el <code>&lt;title&gt;</code>, valida otra vez y apunta el mensaje de error.</li>
+</ol>
+<h4 class="ej" id="e03"><span class="ej-num">E03</span> Caza el error<label class="done"><input type="checkbox" data-ej="E03"> Hecho</label></h4>
+<ol type="1">
+<li>Copia este código en <code>e03-errores.html</code>:</li>
+</ol>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">HTML</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Errores<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Bienvenidos<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Mi página<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Texto en <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>negrita<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">web.html</span><span class="p">&gt;</span>Enlace<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></figure>
+<ol start="2" type="1">
+<li>Valídalo y anota cuántos errores y avisos aparecen.</li>
+<li>Corrígelos uno a uno. Hay al menos 6 problemas (incluye el <code>lang</code> que falta y la etiqueta sin cerrar del final).</li>
+<li>Valida de nuevo hasta obtener <em>No errors or warnings to show</em>.</li>
+</ol>
+<h4 class="ej" id="e04"><span class="ej-num">E04</span> Un head completo<label class="done"><input type="checkbox" data-ej="E04"> Hecho</label></h4>
+<ol type="1">
+<li>Copia <code>e02</code> como <code>e04-head.html</code>.</li>
+<li>Añade las metas <code>viewport</code>, <code>description</code> y <code>author</code>.</li>
+<li>Añade un párrafo con <code>title="Texto de ayuda"</code> y otro con <code>lang="en"</code>.</li>
+<li>Responde en un comentario: ¿cuáles de estos cambios se ven en la página y cuáles no? ¿Dónde aparece el <code>title</code> de la página?</li>
+</ol>
+<h4 class="ej" id="e05"><span class="ej-num">E05</span> Comentarios<label class="done"><input type="checkbox" data-ej="E05"> Hecho</label></h4>
+<ol type="1">
+<li>Añade a todos tus ejercicios un comentario de cabecera (autor, fecha, ejercicio).</li>
+<li>En <code>e04</code>, comenta uno de los párrafos para que desaparezca de la página sin borrarlo.</li>
+</ol>
+</section>
+        
+        <nav class="pager" aria-label="Paginación"><a class="pager-prev" href="bloque-0.html"><small>Anterior</small>Qué es HTML</a><a class="pager-next" href="bloque-2.html"><small>Siguiente</small>Texto con significado</a></nav>
+      </article>
+      <nav class="toc" aria-label="En esta página"><p class="toc-title">En esta página</p><ul><li><a href="#11-anatomía-de-un-elemento">1.1 Anatomía de un elemento</a></li><li><a href="#12-reglas-de-sintaxis">1.2 Reglas de sintaxis</a></li><li><a href="#13-el-esqueleto-de-un-documento-html5">1.3 El esqueleto de un documento HTML5</a></li><li><a href="#14-las-etiquetas-meta-más-usadas">1.4 Las etiquetas meta más usadas</a></li><li><a href="#15-atributos-globales">1.5 Atributos globales</a></li><li><a href="#16-comentarios">1.6 Comentarios</a></li><li><a href="#17-errores-típicos">1.7 Errores típicos</a></li><li><a href="#ejercicios-del-bloque-1">Ejercicios del bloque 1</a></li></ul></nav>
+    </div>
+    <footer class="site-foot">
+      <p>Apuntes del módulo Lenguajes de marcas y sistemas de gestión de información, 1.º DAM. Contenidos organizados a partir del <a href="https://www.w3schools.com/html/default.asp">tutorial de HTML de W3Schools</a>.</p>
+    </footer>
+  </main>
+</div>
+<dialog class="try" id="try">
+  <div class="try-head">
+    <h2>Probar el código</h2>
+    <div class="try-actions"><button type="button" id="try-reset">Restaurar</button><button type="button" id="try-close">Cerrar</button></div>
+  </div>
+  <div class="try-body">
+    <textarea id="try-src" spellcheck="false" aria-label="Código HTML editable"></textarea>
+    <iframe id="try-out" title="Resultado" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+  </div>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloque 8 · Ampliación: gráficos y primer JavaScript | Guía de HTML</title>
+<meta name="description" content="Apuntes de HTML para el módulo de Lenguajes de marcas y sistemas de gestión de información (1.º DAM).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="topbar">
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button>
+  <a class="brand-mini" href="index.html">&lt;html&gt; LMSGI</a>
+</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html"><span class="brand-tag">&lt;html&gt;</span><span>Guía de HTML<br><small>LMSGI · 1.º DAM</small></span></a>
+    <nav aria-label="Bloques de la guía"><ol class="nav-list"><li><a href="index.html"><span class="nav-num nav-num--empty"></span><span>Inicio y entorno</span></a></li><li><a href="bloque-0.html"><span class="nav-num">0</span><span>Qué es HTML</span></a></li><li><a href="bloque-1.html"><span class="nav-num">1</span><span>Estructura y sintaxis</span></a></li><li><a href="bloque-2.html"><span class="nav-num">2</span><span>Texto con significado</span></a></li><li><a href="bloque-3.html"><span class="nav-num">3</span><span>Primer contacto con CSS</span></a></li><li><a href="bloque-4.html"><span class="nav-num">4</span><span>Enlaces, rutas y multimedia</span></a></li><li><a href="bloque-5.html"><span class="nav-num">5</span><span>Listas y tablas</span></a></li><li><a href="bloque-6.html"><span class="nav-num">6</span><span>Semántica y versiones</span></a></li><li><a href="bloque-7.html"><span class="nav-num">7</span><span>Formularios</span></a></li><li><a href="bloque-8.html" aria-current="page"><span class="nav-num">8</span><span>Gráficos y primer JavaScript</span></a></li><li><a href="chuleta.html"><span class="nav-num nav-num--empty"></span><span>Chuleta y referencias</span></a></li></ol></nav>
+    <p class="progress" id="progreso" hidden></p>
+  </aside>
+  <main id="contenido" class="main">
+    <header class="page-head"><p class="page-kicker">Bloque 8</p><h1>Ampliación: gráficos y primer JavaScript</h1></header>
+    <div class="content-wrap">
+      <article class="content">
+        
+<p>Este bloque es opcional y sirve de puente con las siguientes unidades: SVG es XML (UT4) y el JavaScript que manipula elementos es el DOM (UT5).</p>
+<h3 id="81-svg-gráficos-vectoriales">8.1 SVG: gráficos vectoriales</h3>
+<p>SVG (<em>Scalable Vector Graphics</em>) describe dibujos con etiquetas. Al ser vectorial, se amplía sin perder calidad. Se puede usar como archivo (<code>&lt;img src="logo.svg"&gt;</code>) o escribir directamente en el HTML:</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">svg</span> <span class="na">width</span><span class="o">=</span><span class="s">"200"</span> <span class="na">height</span><span class="o">=</span><span class="s">"120"</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">"http://www.w3.org/2000/svg"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">x</span><span class="o">=</span><span class="s">"10"</span> <span class="na">y</span><span class="o">=</span><span class="s">"10"</span> <span class="na">width</span><span class="o">=</span><span class="s">"180"</span> <span class="na">height</span><span class="o">=</span><span class="s">"100"</span> <span class="na">rx</span><span class="o">=</span><span class="s">"10"</span> <span class="na">fill</span><span class="o">=</span><span class="s">"steelblue"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">circle</span> <span class="na">cx</span><span class="o">=</span><span class="s">"60"</span> <span class="na">cy</span><span class="o">=</span><span class="s">"60"</span> <span class="na">r</span><span class="o">=</span><span class="s">"30"</span> <span class="na">fill</span><span class="o">=</span><span class="s">"gold"</span> <span class="na">stroke</span><span class="o">=</span><span class="s">"black"</span> <span class="na">stroke-width</span><span class="o">=</span><span class="s">"2"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">text</span> <span class="na">x</span><span class="o">=</span><span class="s">"100"</span> <span class="na">y</span><span class="o">=</span><span class="s">"68"</span> <span class="na">fill</span><span class="o">=</span><span class="s">"white"</span> <span class="na">font-size</span><span class="o">=</span><span class="s">"20"</span><span class="p">&gt;</span>DAM<span class="p">&lt;/</span><span class="nt">text</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Dibuja</th>
+<th>Atributos principales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rect</code></td>
+<td>Rectángulo</td>
+<td><code>x</code>, <code>y</code>, <code>width</code>, <code>height</code>, <code>rx</code> (esquinas redondeadas)</td>
+</tr>
+<tr class="even">
+<td><code>circle</code></td>
+<td>Círculo</td>
+<td><code>cx</code>, <code>cy</code> (centro), <code>r</code> (radio)</td>
+</tr>
+<tr class="odd">
+<td><code>ellipse</code></td>
+<td>Elipse</td>
+<td><code>cx</code>, <code>cy</code>, <code>rx</code>, <code>ry</code></td>
+</tr>
+<tr class="even">
+<td><code>line</code></td>
+<td>Línea</td>
+<td><code>x1</code>, <code>y1</code>, <code>x2</code>, <code>y2</code></td>
+</tr>
+<tr class="odd">
+<td><code>polygon</code></td>
+<td>Polígono</td>
+<td><code>points="x,y x,y …"</code></td>
+</tr>
+<tr class="even">
+<td><code>text</code></td>
+<td>Texto</td>
+<td><code>x</code>, <code>y</code>, <code>font-size</code></td>
+</tr>
+<tr class="odd">
+<td>(comunes)</td>
+<td>—</td>
+<td><code>fill</code> (relleno), <code>stroke</code> (borde), <code>stroke-width</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fíjate en que todos los elementos se cierran con <code>/&gt;</code> y llevan el espacio de nombres <code>xmlns</code>: es XML.</p>
+<h3 id="82-canvas">8.2 Canvas</h3>
+<p><code>&lt;canvas&gt;</code> es un lienzo vacío en el que se dibuja <strong>con JavaScript</strong>, píxel a píxel. Se usa para juegos y gráficos animados.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">"lienzo"</span> <span class="na">width</span><span class="o">=</span><span class="s">"200"</span> <span class="na">height</span><span class="o">=</span><span class="s">"100"</span> <span class="na">style</span><span class="o">=</span><span class="s">"border:1px solid #000"</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"lienzo"</span><span class="p">).</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">"2d"</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tomato"</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">150</span><span class="p">,</span><span class="w"> </span><span class="mf">60</span><span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>SVG</th>
+<th>Canvas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tipo</td>
+<td>Vectorial, con etiquetas</td>
+<td>Mapa de píxeles, con JavaScript</td>
+</tr>
+<tr class="even">
+<td>¿Se amplía sin perder calidad?</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Cada forma es un elemento del DOM</td>
+<td>Sí (se le puede dar estilo y eventos)</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Ideal para</td>
+<td>Logos, iconos, mapas, gráficos</td>
+<td>Juegos, animaciones, edición de imágenes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-primer-contacto-con-javascript">8.3 Primer contacto con JavaScript</h3>
+<p>El elemento <code>&lt;script&gt;</code> añade código JavaScript, dentro de la página o en un archivo externo:</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"js/app.js"</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p><code>defer</code> hace que el script se ejecute cuando ya se ha leído todo el HTML. <code>&lt;noscript&gt;</code> muestra un contenido alternativo si JavaScript está desactivado.</p>
+<p>Con JavaScript podemos localizar un elemento por su <code>id</code> y cambiarlo:</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"saludo"</span><span class="p">&gt;</span>Hola<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">onclick</span><span class="o">=</span><span class="s">"cambiar()"</span><span class="p">&gt;</span>Cambiar texto<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">cambiar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"saludo"</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"¡Has pulsado el botón!"</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"crimson"</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p><code>onclick</code> es un <strong>atributo de evento</strong>: ejecuta código cuando ocurre algo. Otros: <code>onmouseover</code>, <code>onchange</code>, <code>oninput</code>, <code>onsubmit</code>, <code>onload</code>. En la UT5 aprenderemos la forma moderna (<code>addEventListener</code>).</p>
+<section class="ejercicios"><h3 id="ejercicios-del-bloque-8">Ejercicios del bloque 8</h3>
+<h4 class="ej" id="e29"><span class="ej-num">E29</span> Logo en SVG<label class="done"><input type="checkbox" data-ej="E29"> Hecho</label></h4>
+<p>Dibuja en SVG el logotipo de tu proyecto usando al menos un <code>rect</code>, un <code>circle</code>, un <code>polygon</code> y un <code>text</code>. Ábrelo también como archivo <code>logo.svg</code> independiente y úsalo como favicon.</p>
+<h4 class="ej" id="e30"><span class="ej-num">E30</span> Mi primer botón<label class="done"><input type="checkbox" data-ej="E30"> Hecho</label></h4>
+<ol type="1">
+<li>Crea un párrafo con <code>id</code> y tres botones: uno cambia el texto, otro el color y otro oculta el párrafo (<code>p.hidden = true</code>).</li>
+<li>Añade un <code>input type="range"</code> con <code>oninput</code> que muestre su valor en un <code>&lt;output&gt;</code>.</li>
+</ol>
+</section>
+        
+        <nav class="pager" aria-label="Paginación"><a class="pager-prev" href="bloque-7.html"><small>Anterior</small>Formularios</a><a class="pager-next" href="chuleta.html"><small>Siguiente</small>Chuleta y referencias</a></nav>
+      </article>
+      <nav class="toc" aria-label="En esta página"><p class="toc-title">En esta página</p><ul><li><a href="#81-svg-gráficos-vectoriales">8.1 SVG: gráficos vectoriales</a></li><li><a href="#82-canvas">8.2 Canvas</a></li><li><a href="#83-primer-contacto-con-javascript">8.3 Primer contacto con JavaScript</a></li><li><a href="#ejercicios-del-bloque-8">Ejercicios del bloque 8</a></li></ul></nav>
+    </div>
+    <footer class="site-foot">
+      <p>Apuntes del módulo Lenguajes de marcas y sistemas de gestión de información, 1.º DAM. Contenidos organizados a partir del <a href="https://www.w3schools.com/html/default.asp">tutorial de HTML de W3Schools</a>.</p>
+    </footer>
+  </main>
+</div>
+<dialog class="try" id="try">
+  <div class="try-head">
+    <h2>Probar el código</h2>
+    <div class="try-actions"><button type="button" id="try-reset">Restaurar</button><button type="button" id="try-close">Cerrar</button></div>
+  </div>
+  <div class="try-body">
+    <textarea id="try-src" spellcheck="false" aria-label="Código HTML editable"></textarea>
+    <iframe id="try-out" title="Resultado" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+  </div>
+</dialog>
+</body>
+</html>

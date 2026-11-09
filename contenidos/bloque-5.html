@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloque 5 · Listas y tablas | Guía de HTML</title>
+<meta name="description" content="Apuntes de HTML para el módulo de Lenguajes de marcas y sistemas de gestión de información (1.º DAM).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="topbar">
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button>
+  <a class="brand-mini" href="index.html">&lt;html&gt; LMSGI</a>
+</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html"><span class="brand-tag">&lt;html&gt;</span><span>Guía de HTML<br><small>LMSGI · 1.º DAM</small></span></a>
+    <nav aria-label="Bloques de la guía"><ol class="nav-list"><li><a href="index.html"><span class="nav-num nav-num--empty"></span><span>Inicio y entorno</span></a></li><li><a href="bloque-0.html"><span class="nav-num">0</span><span>Qué es HTML</span></a></li><li><a href="bloque-1.html"><span class="nav-num">1</span><span>Estructura y sintaxis</span></a></li><li><a href="bloque-2.html"><span class="nav-num">2</span><span>Texto con significado</span></a></li><li><a href="bloque-3.html"><span class="nav-num">3</span><span>Primer contacto con CSS</span></a></li><li><a href="bloque-4.html"><span class="nav-num">4</span><span>Enlaces, rutas y multimedia</span></a></li><li><a href="bloque-5.html" aria-current="page"><span class="nav-num">5</span><span>Listas y tablas</span></a></li><li><a href="bloque-6.html"><span class="nav-num">6</span><span>Semántica y versiones</span></a></li><li><a href="bloque-7.html"><span class="nav-num">7</span><span>Formularios</span></a></li><li><a href="bloque-8.html"><span class="nav-num">8</span><span>Gráficos y primer JavaScript</span></a></li><li><a href="chuleta.html"><span class="nav-num nav-num--empty"></span><span>Chuleta y referencias</span></a></li></ol></nav>
+    <p class="progress" id="progreso" hidden></p>
+  </aside>
+  <main id="contenido" class="main">
+    <header class="page-head"><p class="page-kicker">Bloque 5</p><h1>Listas y tablas</h1></header>
+    <div class="content-wrap">
+      <article class="content">
+        
+<p>Listas y tablas organizan información con estructura: las listas, elementos en serie; las tablas, datos en filas y columnas. Las tablas <strong>solo</strong> son para datos tabulares, nunca para maquetar la página (eso se hacía antes de CSS y hoy es un error).</p>
+<h3 id="51-lista-no-ordenada-ul">5.1 Lista no ordenada: <code>&lt;ul&gt;</code></h3>
+<p>Para elementos cuyo orden no importa. Cada elemento va en un <code>&lt;li&gt;</code> (<em>list item</em>).</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Teclado<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Ratón<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Monitor<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>La viñeta se cambia con CSS: <code>list-style-type: square;</code> (<code>disc</code>, <code>circle</code>, <code>square</code>, <code>none</code>).</p>
+<h3 id="52-lista-ordenada-ol">5.2 Lista ordenada: <code>&lt;ol&gt;</code></h3>
+<p>Para pasos o rankings donde el orden sí importa.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Atributo</th>
+<th>Para qué sirve</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>type</code></td>
+<td>Tipo de numeración: <code>1</code>, <code>A</code>, <code>a</code>, <code>I</code>, <code>i</code></td>
+<td><code>type="I"</code> → I, II, III</td>
+</tr>
+<tr class="even">
+<td><code>start</code></td>
+<td>Número inicial</td>
+<td><code>start="5"</code></td>
+</tr>
+<tr class="odd">
+<td><code>reversed</code></td>
+<td>Cuenta hacia atrás</td>
+<td><code>&lt;ol reversed&gt;</code></td>
+</tr>
+<tr class="even">
+<td><code>value</code> (en <code>li</code>)</td>
+<td>Fuerza el número de ese elemento</td>
+<td><code>&lt;li value="10"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">ol</span> <span class="na">type</span><span class="o">=</span><span class="s">"1"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Abrir VS Code<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Crear el archivo<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Guardar con Ctrl+S<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+</code></pre></figure>
+<h3 id="53-lista-de-descripción-dl">5.3 Lista de descripción: <code>&lt;dl&gt;</code></h3>
+<p>Para pares término–definición: glosarios, fichas técnicas, preguntas frecuentes.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">dl</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>HTML<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>Lenguaje de marcas para estructurar páginas web.<span class="p">&lt;/</span><span class="nt">dd</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">dt</span><span class="p">&gt;</span>CSS<span class="p">&lt;/</span><span class="nt">dt</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">dd</span><span class="p">&gt;</span>Lenguaje de hojas de estilo para dar presentación.<span class="p">&lt;/</span><span class="nt">dd</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">dl</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dl</code></td>
+<td><em>Description list</em>, el contenedor</td>
+</tr>
+<tr class="even">
+<td><code>dt</code></td>
+<td><em>Description term</em>, el término</td>
+</tr>
+<tr class="odd">
+<td><code>dd</code></td>
+<td><em>Description details</em>, la descripción (puede haber varias por término)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54-listas-anidadas">5.4 Listas anidadas</h3>
+<p>Una lista puede ir <strong>dentro de un <code>li</code></strong>, nunca directamente dentro de otro <code>ul</code>. Así se hacen los menús con submenús.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Primer curso
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Lenguajes de marcas<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Programación<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Segundo curso<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</code></pre></figure>
+<h3 id="55-tablas-estructura-básica">5.5 Tablas: estructura básica</h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Módulo<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Horas<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Lenguajes de marcas<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>128<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Significado</th>
+<th>Qué contiene</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>table</code></td>
+<td>La tabla</td>
+<td>Filas o grupos de filas</td>
+</tr>
+<tr class="even">
+<td><code>tr</code></td>
+<td><em>Table row</em>, una fila</td>
+<td>Celdas</td>
+</tr>
+<tr class="odd">
+<td><code>th</code></td>
+<td><em>Table header</em>, celda de encabezado (negrita y centrada por defecto)</td>
+<td>Texto u otros elementos</td>
+</tr>
+<tr class="even">
+<td><code>td</code></td>
+<td><em>Table data</em>, celda de datos</td>
+<td>Texto u otros elementos</td>
+</tr>
+<tr class="odd">
+<td><code>caption</code></td>
+<td>Título de la tabla; va justo después de <code>&lt;table&gt;</code></td>
+<td>Texto</td>
+</tr>
+</tbody>
+</table>
+<p>La tabla se construye <strong>fila a fila</strong>: no hay elemento «columna»; las columnas salen de colocar las celdas en el mismo orden en cada fila.</p>
+<h3 id="56-tablas-secciones-y-accesibilidad">5.6 Tablas: secciones y accesibilidad</h3>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">caption</span><span class="p">&gt;</span>Horario de 1.º DAM — lunes y martes<span class="p">&lt;/</span><span class="nt">caption</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>Hora<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>Lunes<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">"col"</span><span class="p">&gt;</span>Martes<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">th</span> <span class="na">scope</span><span class="o">=</span><span class="s">"row"</span><span class="p">&gt;</span>8:30<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Programación<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Bases de datos<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tfoot</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span> <span class="na">colspan</span><span class="o">=</span><span class="s">"3"</span><span class="p">&gt;</span>Horario provisional<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tfoot</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento / atributo</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>thead</code></td>
+<td>Agrupa las filas de encabezado</td>
+</tr>
+<tr class="even">
+<td><code>tbody</code></td>
+<td>Agrupa las filas de datos (puede haber varios)</td>
+</tr>
+<tr class="odd">
+<td><code>tfoot</code></td>
+<td>Agrupa las filas de pie: totales, notas</td>
+</tr>
+<tr class="even">
+<td><code>scope="col"</code> / <code>scope="row"</code></td>
+<td>Indica si un <code>th</code> es encabezado de columna o de fila (lo usan los lectores de pantalla)</td>
+</tr>
+<tr class="odd">
+<td><code>colgroup</code> + <code>col</code></td>
+<td>Permite dar estilo a columnas enteras: <code>&lt;col span="2" style="background: #eee"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="57-combinar-celdas-colspan-y-rowspan">5.7 Combinar celdas: <code>colspan</code> y <code>rowspan</code></h3>
+<ul>
+<li><code>colspan="n"</code>: la celda ocupa <strong>n columnas</strong> hacia la derecha. En esa fila escribes n–1 celdas menos.</li>
+<li><code>rowspan="n"</code>: la celda ocupa <strong>n filas</strong> hacia abajo. En las n–1 filas siguientes escribes una celda menos.</li>
+</ul>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Hora<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Lunes<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Martes<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>8:30<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">rowspan</span><span class="o">=</span><span class="s">"2"</span><span class="p">&gt;</span>Programación (2 h)<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Bases de datos<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>9:25<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- aquí no va celda de Lunes: la ocupa el rowspan --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Sistemas<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>10:20<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span> <span class="na">colspan</span><span class="o">=</span><span class="s">"2"</span><span class="p">&gt;</span>RECREO<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Truco: antes de escribir una tabla con celdas combinadas, <strong>dibújala en papel</strong> con una cuadrícula y cuenta cuántas celdas hay realmente en cada fila.</p>
+<p>Para ver los bordes mientras practicas, añade en el <code>&lt;style&gt;</code>: <code>table, th, td { border: 1px solid black; border-collapse: collapse; }</code>. El atributo <code>border="1"</code> de <code>&lt;table&gt;</code> es antiguo: el validador lo marca como obsoleto.</p>
+<section class="callout errores"><h3 id="58-errores-típicos">5.8 Errores típicos</h3>
+<ul>
+<li>Texto suelto dentro de <code>&lt;ul&gt;</code> sin <code>&lt;li&gt;</code>.</li>
+<li>Lista anidada fuera del <code>&lt;li&gt;</code>.</li>
+<li>Filas con distinto número de celdas (la tabla se descuadra).</li>
+<li>Olvidar quitar las celdas que «ocupa» un <code>rowspan</code>.</li>
+<li>Usar tablas para colocar menús o columnas de la página.</li>
+</ul>
+</section><section class="ejercicios"><h3 id="ejercicios-del-bloque-5">Ejercicios del bloque 5</h3>
+<h4 class="ej" id="e18"><span class="ej-num">E18</span> Receta<label class="done"><input type="checkbox" data-ej="E18"> Hecho</label></h4>
+<ol type="1">
+<li>En <code>e18-receta.html</code> escribe una receta con un <code>h1</code> y dos <code>h2</code>: «Ingredientes» y «Preparación».</li>
+<li>Ingredientes en <code>ul</code>; pasos en <code>ol</code>.</li>
+<li>Añade un apartado «Variantes» con una <code>ol</code> que empiece en 1 y use <code>type="a"</code>.</li>
+<li>Añade un glosario de tres términos de cocina con <code>dl</code>.</li>
+<li>Crea un menú de navegación con una lista anidada (Recetas › Primeros, Segundos, Postres).</li>
+</ol>
+<h4 class="ej" id="e19"><span class="ej-num">E19</span> Tu horario<label class="done"><input type="checkbox" data-ej="E19"> Hecho</label></h4>
+<ol type="1">
+<li>Dibuja en papel tu horario semanal real.</li>
+<li>Pásalo a <code>e19-horario.html</code> con <code>caption</code>, <code>thead</code>, <code>tbody</code> y <code>tfoot</code>.</li>
+<li>Los módulos de 2 horas seguidas van con <code>rowspan</code> y el recreo con <code>colspan</code>.</li>
+<li>Usa <code>th</code> con <code>scope="col"</code> para los días y <code>scope="row"</code> para las horas.</li>
+<li>Añade bordes con CSS y valida.</li>
+</ol>
+<h4 class="ej" id="e20"><span class="ej-num">E20</span> Reto: copia la tabla<label class="done"><input type="checkbox" data-ej="E20"> Hecho</label></h4>
+<p>Tu profesor te dará una captura de una tabla con varias celdas combinadas en filas y columnas. Reprodúcela exactamente y valida.</p>
+</section>
+        
+        <nav class="pager" aria-label="Paginación"><a class="pager-prev" href="bloque-4.html"><small>Anterior</small>Enlaces, rutas y multimedia</a><a class="pager-next" href="bloque-6.html"><small>Siguiente</small>Semántica y versiones</a></nav>
+      </article>
+      <nav class="toc" aria-label="En esta página"><p class="toc-title">En esta página</p><ul><li><a href="#51-lista-no-ordenada-ul">5.1 Lista no ordenada: &lt;ul&gt;</a></li><li><a href="#52-lista-ordenada-ol">5.2 Lista ordenada: &lt;ol&gt;</a></li><li><a href="#53-lista-de-descripción-dl">5.3 Lista de descripción: &lt;dl&gt;</a></li><li><a href="#54-listas-anidadas">5.4 Listas anidadas</a></li><li><a href="#55-tablas-estructura-básica">5.5 Tablas: estructura básica</a></li><li><a href="#56-tablas-secciones-y-accesibilidad">5.6 Tablas: secciones y accesibilidad</a></li><li><a href="#57-combinar-celdas-colspan-y-rowspan">5.7 Combinar celdas: colspan y rowspan</a></li><li><a href="#58-errores-típicos">5.8 Errores típicos</a></li><li><a href="#ejercicios-del-bloque-5">Ejercicios del bloque 5</a></li></ul></nav>
+    </div>
+    <footer class="site-foot">
+      <p>Apuntes del módulo Lenguajes de marcas y sistemas de gestión de información, 1.º DAM. Contenidos organizados a partir del <a href="https://www.w3schools.com/html/default.asp">tutorial de HTML de W3Schools</a>.</p>
+    </footer>
+  </main>
+</div>
+<dialog class="try" id="try">
+  <div class="try-head">
+    <h2>Probar el código</h2>
+    <div class="try-actions"><button type="button" id="try-reset">Restaurar</button><button type="button" id="try-close">Cerrar</button></div>
+  </div>
+  <div class="try-body">
+    <textarea id="try-src" spellcheck="false" aria-label="Código HTML editable"></textarea>
+    <iframe id="try-out" title="Resultado" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+  </div>
+</dialog>
+</body>
+</html>

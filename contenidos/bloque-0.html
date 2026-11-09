@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloque 0 · Qué es HTML | Guía de HTML</title>
+<meta name="description" content="Apuntes de HTML para el módulo de Lenguajes de marcas y sistemas de gestión de información (1.º DAM).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="topbar">
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button>
+  <a class="brand-mini" href="index.html">&lt;html&gt; LMSGI</a>
+</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html"><span class="brand-tag">&lt;html&gt;</span><span>Guía de HTML<br><small>LMSGI · 1.º DAM</small></span></a>
+    <nav aria-label="Bloques de la guía"><ol class="nav-list"><li><a href="index.html"><span class="nav-num nav-num--empty"></span><span>Inicio y entorno</span></a></li><li><a href="bloque-0.html" aria-current="page"><span class="nav-num">0</span><span>Qué es HTML</span></a></li><li><a href="bloque-1.html"><span class="nav-num">1</span><span>Estructura y sintaxis</span></a></li><li><a href="bloque-2.html"><span class="nav-num">2</span><span>Texto con significado</span></a></li><li><a href="bloque-3.html"><span class="nav-num">3</span><span>Primer contacto con CSS</span></a></li><li><a href="bloque-4.html"><span class="nav-num">4</span><span>Enlaces, rutas y multimedia</span></a></li><li><a href="bloque-5.html"><span class="nav-num">5</span><span>Listas y tablas</span></a></li><li><a href="bloque-6.html"><span class="nav-num">6</span><span>Semántica y versiones</span></a></li><li><a href="bloque-7.html"><span class="nav-num">7</span><span>Formularios</span></a></li><li><a href="bloque-8.html"><span class="nav-num">8</span><span>Gráficos y primer JavaScript</span></a></li><li><a href="chuleta.html"><span class="nav-num nav-num--empty"></span><span>Chuleta y referencias</span></a></li></ol></nav>
+    <p class="progress" id="progreso" hidden></p>
+  </aside>
+  <main id="contenido" class="main">
+    <header class="page-head"><p class="page-kicker">Bloque 0</p><h1>Qué es HTML</h1></header>
+    <div class="content-wrap">
+      <article class="content">
+        
+<p>HTML (<em>HyperText Markup Language</em>) es un <strong>lenguaje de marcas</strong>: no es un lenguaje de programación, porque no tiene variables, condiciones ni bucles. Su función es <strong>describir la estructura y el significado</strong> del contenido de una página web (esto es un título, esto un párrafo, esto un enlace). El aspecto visual lo decide CSS y el comportamiento, JavaScript.</p>
+<h3 id="01-marcas-etiquetas-y-el-navegador">0.1 Marcas, etiquetas y el navegador</h3>
+<p>Una marca es un texto especial que rodea al contenido para decir qué es. En HTML las marcas se escriben entre <code>&lt;</code> y <code>&gt;</code>:</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Ciclo de Desarrollo de Aplicaciones Multiplataforma<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Este ciclo dura dos cursos.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>El navegador (Chrome, Firefox, Edge…) lee ese texto, <strong>interpreta</strong> las marcas y construye la página. Las marcas no se ven: se ve su efecto. Por eso un archivo HTML es simplemente texto plano con extensión <code>.html</code> y puede escribirse con cualquier editor.</p>
+<h3 id="02-las-tres-capas-de-una-web">0.2 Las tres capas de una web</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Capa</th>
+<th>Tecnología</th>
+<th>Responde a</th>
+<th>Unidad del módulo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Contenido y estructura</td>
+<td>HTML</td>
+<td>¿Qué es cada cosa?</td>
+<td>UT2 (esta)</td>
+</tr>
+<tr class="even">
+<td>Presentación</td>
+<td>CSS</td>
+<td>¿Cómo se ve?</td>
+<td>UT3</td>
+</tr>
+<tr class="odd">
+<td>Comportamiento</td>
+<td>JavaScript</td>
+<td>¿Qué hace al interactuar?</td>
+<td>UT5 (DOM)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="03-versiones-y-estándares">0.3 Versiones y estándares</h3>
+<p>HTML ha cambiado mucho desde su creación. Conocer las versiones sirve para entender código antiguo y saber por qué hoy se escribe de una forma concreta.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Año</th>
+<th>Versión</th>
+<th>Organismo</th>
+<th>Qué aportó</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1991</td>
+<td>HTML (Tim Berners-Lee, CERN)</td>
+<td>—</td>
+<td>Primer lenguaje de la web: títulos, párrafos, enlaces</td>
+</tr>
+<tr class="even">
+<td>1995</td>
+<td>HTML 2.0</td>
+<td>IETF</td>
+<td>Primer estándar oficial; formularios</td>
+</tr>
+<tr class="odd">
+<td>1997</td>
+<td>HTML 3.2</td>
+<td>W3C</td>
+<td>Tablas, applets; etiquetas de presentación (<code>font</code>, <code>center</code>)</td>
+</tr>
+<tr class="even">
+<td>1999</td>
+<td>HTML 4.01</td>
+<td>W3C</td>
+<td>Separa contenido (HTML) y estilo (CSS)</td>
+</tr>
+<tr class="odd">
+<td>2000</td>
+<td>XHTML 1.0</td>
+<td>W3C</td>
+<td>HTML reescrito con las reglas estrictas de XML</td>
+</tr>
+<tr class="even">
+<td>2014</td>
+<td>HTML5</td>
+<td>W3C / WHATWG</td>
+<td>Etiquetas semánticas, vídeo y audio nativos, nuevos formularios, APIs</td>
+</tr>
+<tr class="odd">
+<td>Desde 2019</td>
+<td>HTML <em>Living Standard</em></td>
+<td>WHATWG</td>
+<td>Estándar único que se actualiza de forma continua; ya no hay «HTML6»</td>
+</tr>
+</tbody>
+</table>
+<p>Quién es quién: el <strong>W3C</strong> (<em>World Wide Web Consortium</em>) define muchos estándares web y mantiene el validador; el <strong>WHATWG</strong>, formado por los fabricantes de navegadores, mantiene hoy la especificación de HTML.</p>
+<h3 id="04-el-doctype-delata-la-versión">0.4 El DOCTYPE delata la versión</h3>
+<p>La primera línea del documento indica al navegador con qué reglas debe leerlo:</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="cm">&lt;!-- HTML 4.01 Strict --&gt;</span>
+<span class="cp">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;</span>
+
+<span class="cm">&lt;!-- XHTML 1.0 Strict --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</span>
+
+<span class="cm">&lt;!-- HTML5 / Living Standard --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+</code></pre></figure>
+<p>Si falta el DOCTYPE, el navegador entra en <strong>modo <em>quirks</em></strong> (modo de compatibilidad con páginas muy antiguas) y puede mostrar la página de forma diferente. Siempre lo pondremos.</p>
+<section class="ejercicios"><h3 id="ejercicios-del-bloque-0">Ejercicios del bloque 0</h3>
+<h4 class="ej" id="e00"><span class="ej-num">E00</span> Hola mundo<label class="done"><input type="checkbox" data-ej="E00"> Hecho</label></h4>
+<ol type="1">
+<li>Dentro de <code>ejercicios/</code> crea el archivo <code>e00-hola.html</code>.</li>
+<li>Escribe solo esta línea: <code>&lt;h1&gt;Hola mundo&lt;/h1&gt;</code> y ábrelo con Live Server.</li>
+<li>Añade debajo <code>&lt;p&gt;Mi primera página&lt;/p&gt;</code>, guarda y comprueba que se recarga.</li>
+<li>Pulsa Ctrl+U y luego F12. Escribe en un comentario qué diferencia ves entre ambos (pista: el navegador ha añadido <code>html</code>, <code>head</code> y <code>body</code> él solo).</li>
+</ol>
+<h4 class="ej" id="e01"><span class="ej-num">E01</span> ¿Qué versión es?<label class="done"><input type="checkbox" data-ej="E01"> Hecho</label></h4>
+<ol type="1">
+<li>Tu profesor te dará tres fragmentos de código antiguo.</li>
+<li>Para cada uno, identifica la versión de HTML por su DOCTYPE y por las etiquetas que usa (por ejemplo, <code>&lt;font&gt;</code> indica HTML 3.2/4).</li>
+<li>Ordénalos en la línea temporal de 0.3 y explica en dos líneas qué cambiarías para pasarlos a HTML5.</li>
+</ol>
+</section>
+        
+        <nav class="pager" aria-label="Paginación"><a class="pager-prev" href="index.html"><small>Anterior</small>Inicio y entorno</a><a class="pager-next" href="bloque-1.html"><small>Siguiente</small>Estructura y sintaxis</a></nav>
+      </article>
+      <nav class="toc" aria-label="En esta página"><p class="toc-title">En esta página</p><ul><li><a href="#01-marcas-etiquetas-y-el-navegador">0.1 Marcas, etiquetas y el navegador</a></li><li><a href="#02-las-tres-capas-de-una-web">0.2 Las tres capas de una web</a></li><li><a href="#03-versiones-y-estándares">0.3 Versiones y estándares</a></li><li><a href="#04-el-doctype-delata-la-versión">0.4 El DOCTYPE delata la versión</a></li><li><a href="#ejercicios-del-bloque-0">Ejercicios del bloque 0</a></li></ul></nav>
+    </div>
+    <footer class="site-foot">
+      <p>Apuntes del módulo Lenguajes de marcas y sistemas de gestión de información, 1.º DAM. Contenidos organizados a partir del <a href="https://www.w3schools.com/html/default.asp">tutorial de HTML de W3Schools</a>.</p>
+    </footer>
+  </main>
+</div>
+<dialog class="try" id="try">
+  <div class="try-head">
+    <h2>Probar el código</h2>
+    <div class="try-actions"><button type="button" id="try-reset">Restaurar</button><button type="button" id="try-close">Cerrar</button></div>
+  </div>
+  <div class="try-body">
+    <textarea id="try-src" spellcheck="false" aria-label="Código HTML editable"></textarea>
+    <iframe id="try-out" title="Resultado" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+  </div>
+</dialog>
+</body>
+</html>

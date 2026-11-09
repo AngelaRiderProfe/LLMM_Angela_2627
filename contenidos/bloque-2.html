@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloque 2 · Texto con significado | Guía de HTML</title>
+<meta name="description" content="Apuntes de HTML para el módulo de Lenguajes de marcas y sistemas de gestión de información (1.º DAM).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="topbar">
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button>
+  <a class="brand-mini" href="index.html">&lt;html&gt; LMSGI</a>
+</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html"><span class="brand-tag">&lt;html&gt;</span><span>Guía de HTML<br><small>LMSGI · 1.º DAM</small></span></a>
+    <nav aria-label="Bloques de la guía"><ol class="nav-list"><li><a href="index.html"><span class="nav-num nav-num--empty"></span><span>Inicio y entorno</span></a></li><li><a href="bloque-0.html"><span class="nav-num">0</span><span>Qué es HTML</span></a></li><li><a href="bloque-1.html"><span class="nav-num">1</span><span>Estructura y sintaxis</span></a></li><li><a href="bloque-2.html" aria-current="page"><span class="nav-num">2</span><span>Texto con significado</span></a></li><li><a href="bloque-3.html"><span class="nav-num">3</span><span>Primer contacto con CSS</span></a></li><li><a href="bloque-4.html"><span class="nav-num">4</span><span>Enlaces, rutas y multimedia</span></a></li><li><a href="bloque-5.html"><span class="nav-num">5</span><span>Listas y tablas</span></a></li><li><a href="bloque-6.html"><span class="nav-num">6</span><span>Semántica y versiones</span></a></li><li><a href="bloque-7.html"><span class="nav-num">7</span><span>Formularios</span></a></li><li><a href="bloque-8.html"><span class="nav-num">8</span><span>Gráficos y primer JavaScript</span></a></li><li><a href="chuleta.html"><span class="nav-num nav-num--empty"></span><span>Chuleta y referencias</span></a></li></ol></nav>
+    <p class="progress" id="progreso" hidden></p>
+  </aside>
+  <main id="contenido" class="main">
+    <header class="page-head"><p class="page-kicker">Bloque 2</p><h1>Texto con significado</h1></header>
+    <div class="content-wrap">
+      <article class="content">
+        
+<p>La regla de oro de este bloque: <strong>elige la etiqueta por lo que el texto <em>es</em>, no por cómo quieres que se vea</strong>. Que algo salga grande o en negrita se cambia luego con CSS; lo que no se puede cambiar es el significado que le da la etiqueta, que es lo que leen los buscadores y los lectores de pantalla.</p>
+<h3 id="21-títulos-h1-a-h6">2.1 Títulos: <code>h1</code> a <code>h6</code></h3>
+<p>Hay seis niveles de encabezado. Funcionan como el índice de un libro: <code>h1</code> es el título principal y los demás, subapartados.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Desarrollo de Aplicaciones Multiplataforma<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Primer curso<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Lenguajes de marcas<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Programación<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Segundo curso<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Normas:</p>
+<ul>
+<li>Un solo <code>h1</code> por página (recomendación de accesibilidad y SEO).</li>
+<li>No te saltes niveles: de <code>h2</code> se baja a <code>h3</code>, no a <code>h5</code>.</li>
+<li>No uses un encabezado para hacer texto grande: para eso está CSS.</li>
+</ul>
+<h3 id="22-párrafos-saltos-de-línea-y-separadores">2.2 Párrafos, saltos de línea y separadores</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Tipo</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;p&gt;…&lt;/p&gt;</code></td>
+<td>Bloque</td>
+<td>Un párrafo de texto. El navegador añade margen arriba y abajo</td>
+</tr>
+<tr class="even">
+<td><code>&lt;br&gt;</code></td>
+<td>Vacío</td>
+<td>Salto de línea dentro de un párrafo: direcciones, poemas. No lo uses para separar párrafos</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;hr&gt;</code></td>
+<td>Vacío</td>
+<td>Cambio de tema dentro del texto; se dibuja como una línea horizontal</td>
+</tr>
+<tr class="even">
+<td><code>&lt;pre&gt;…&lt;/pre&gt;</code></td>
+<td>Bloque</td>
+<td>Texto preformateado: respeta espacios y saltos de línea tal cual</td>
+</tr>
+</tbody>
+</table>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>IES Ejemplo<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+Calle Mayor, 1<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+28001 Madrid<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Otro tema distinto.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Prueba: escribe un párrafo con 10 espacios seguidos y varios saltos de línea. Verás que el navegador los convierte en un solo espacio.</p>
+<h3 id="23-formato-de-texto">2.3 Formato de texto</h3>
+<p>Cada pareja de etiquetas se ve igual, pero significa algo distinto:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Etiqueta</th>
+<th>Se ve</th>
+<th>Significado</th>
+<th>Cuándo usarla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;strong&gt;</code></td>
+<td>Negrita</td>
+<td>Importancia fuerte</td>
+<td>«No apagues el equipo»</td>
+</tr>
+<tr class="even">
+<td><code>&lt;b&gt;</code></td>
+<td>Negrita</td>
+<td>Solo llama la atención, sin importancia extra</td>
+<td>Palabras clave de un resumen</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;em&gt;</code></td>
+<td>Cursiva</td>
+<td>Énfasis: cambia el sentido de la frase</td>
+<td>«Yo <em>no</em> he dicho eso»</td>
+</tr>
+<tr class="even">
+<td><code>&lt;i&gt;</code></td>
+<td>Cursiva</td>
+<td>Voz o tono distinto</td>
+<td>Términos en otro idioma, nombres científicos</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;mark&gt;</code></td>
+<td>Resaltado amarillo</td>
+<td>Texto marcado por relevancia</td>
+<td>Resultado de una búsqueda</td>
+</tr>
+<tr class="even">
+<td><code>&lt;small&gt;</code></td>
+<td>Más pequeño</td>
+<td>Letra pequeña, avisos legales</td>
+<td>Copyright</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;del&gt;</code></td>
+<td>Tachado</td>
+<td>Texto eliminado</td>
+<td>Precio antiguo</td>
+</tr>
+<tr class="even">
+<td><code>&lt;ins&gt;</code></td>
+<td>Subrayado</td>
+<td>Texto añadido</td>
+<td>Precio nuevo</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;sub&gt;</code></td>
+<td>Subíndice</td>
+<td>—</td>
+<td>H₂O</td>
+</tr>
+<tr class="even">
+<td><code>&lt;sup&gt;</code></td>
+<td>Superíndice</td>
+<td>—</td>
+<td>m², 1.º, notas al pie</td>
+</tr>
+</tbody>
+</table>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Precio: <span class="p">&lt;</span><span class="nt">del</span><span class="p">&gt;</span>49 €<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">ins</span><span class="p">&gt;</span>39 €<span class="p">&lt;/</span><span class="nt">ins</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>La fórmula del agua es H<span class="p">&lt;</span><span class="nt">sub</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sub</span><span class="p">&gt;</span>O y la energía es E = mc<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Atención:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> guarda el trabajo antes de cerrar.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></figure>
+<h3 id="24-citas-y-referencias">2.4 Citas y referencias</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Tipo</th>
+<th>Para qué sirve</th>
+<th>Atributos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;blockquote&gt;</code></td>
+<td>Bloque</td>
+<td>Cita larga, sacada de otra fuente</td>
+<td><code>cite</code> = URL de la fuente</td>
+</tr>
+<tr class="even">
+<td><code>&lt;q&gt;</code></td>
+<td>Línea</td>
+<td>Cita corta dentro de un párrafo; el navegador pone comillas</td>
+<td><code>cite</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;cite&gt;</code></td>
+<td>Línea</td>
+<td>Título de una obra (libro, película, web)</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><code>&lt;abbr&gt;</code></td>
+<td>Línea</td>
+<td>Abreviatura o sigla</td>
+<td><code>title</code> = significado completo</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;address&gt;</code></td>
+<td>Bloque</td>
+<td>Datos de contacto del autor o la organización</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><code>&lt;bdo&gt;</code></td>
+<td>Línea</td>
+<td>Cambia la dirección del texto</td>
+<td><code>dir="rtl"</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">blockquote</span> <span class="na">cite</span><span class="o">=</span><span class="s">"https://www.w3.org/standards/"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>El W3C desarrolla estándares abiertos para la web.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Como dijo Grace Hopper, <span class="p">&lt;</span><span class="nt">q</span><span class="p">&gt;</span>es más fácil pedir perdón que pedir permiso<span class="p">&lt;/</span><span class="nt">q</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Lo estudiamos en <span class="p">&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">"Desarrollo de Aplicaciones Multiplataforma"</span><span class="p">&gt;</span>DAM<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">address</span><span class="p">&gt;</span>
+  Departamento de Informática<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"mailto:info@ejemplo.es"</span><span class="p">&gt;</span>info@ejemplo.es<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">address</span><span class="p">&gt;</span>
+</code></pre></figure>
+<h3 id="25-código-informático">2.5 Código informático</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;code&gt;</code></td>
+<td>Fragmento de código (fuente monoespaciada)</td>
+</tr>
+<tr class="even">
+<td><code>&lt;pre&gt;</code></td>
+<td>Respeta espacios: se combina con <code>code</code> para bloques de código</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;kbd&gt;</code></td>
+<td>Tecla o entrada de teclado</td>
+</tr>
+<tr class="even">
+<td><code>&lt;samp&gt;</code></td>
+<td>Salida de un programa</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;var&gt;</code></td>
+<td>Variable matemática o de programación</td>
+</tr>
+</tbody>
+</table>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Pulsa <span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>Ctrl<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span> + <span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>S<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span> para guardar.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">pre</span><span class="p">&gt;&lt;</span><span class="nt">code</span><span class="p">&gt;</span>public class Hola {
+    public static void main(String[] args) {
+        System.out.println("Hola");
+    }
+}<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>El programa muestra: <span class="p">&lt;</span><span class="nt">samp</span><span class="p">&gt;</span>Hola<span class="p">&lt;/</span><span class="nt">samp</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></figure>
+<h3 id="26-entidades-símbolos-y-emojis">2.6 Entidades, símbolos y emojis</h3>
+<p>Algunos caracteres tienen un significado especial en HTML (<code>&lt;</code> abre una etiqueta) o no están en el teclado. Se escriben con <strong>entidades</strong>: <code>&amp;nombre;</code> o <code>&amp;#número;</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Carácter</th>
+<th>Entidad</th>
+<th>Número</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt;</td>
+<td><code>&amp;lt;</code></td>
+<td><code>&amp;#60;</code></td>
+<td>Mostrar etiquetas como texto</td>
+</tr>
+<tr class="even">
+<td>&gt;</td>
+<td><code>&amp;gt;</code></td>
+<td><code>&amp;#62;</code></td>
+<td>Ídem</td>
+</tr>
+<tr class="odd">
+<td>&amp;</td>
+<td><code>&amp;amp;</code></td>
+<td><code>&amp;#38;</code></td>
+<td>El propio símbolo &amp;</td>
+</tr>
+<tr class="even">
+<td>"</td>
+<td><code>&amp;quot;</code></td>
+<td><code>&amp;#34;</code></td>
+<td>Comillas dentro de un atributo</td>
+</tr>
+<tr class="odd">
+<td>(espacio fijo)</td>
+<td><code>&amp;nbsp;</code></td>
+<td><code>&amp;#160;</code></td>
+<td>Que «10 €» no se parta en dos líneas</td>
+</tr>
+<tr class="even">
+<td>©</td>
+<td><code>&amp;copy;</code></td>
+<td><code>&amp;#169;</code></td>
+<td>Copyright</td>
+</tr>
+<tr class="odd">
+<td>€</td>
+<td><code>&amp;euro;</code></td>
+<td><code>&amp;#8364;</code></td>
+<td>Euro</td>
+</tr>
+<tr class="even">
+<td>→</td>
+<td><code>&amp;rarr;</code></td>
+<td><code>&amp;#8594;</code></td>
+<td>Flecha</td>
+</tr>
+<tr class="odd">
+<td>😀</td>
+<td>—</td>
+<td><code>&amp;#128512;</code></td>
+<td>Emoji (requiere <code>charset UTF-8</code>)</td>
+</tr>
+</tbody>
+</table>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Para un párrafo escribe <span class="ni">&amp;lt;</span>p<span class="ni">&amp;gt;</span>texto<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Precio: 10<span class="ni">&amp;nbsp;&amp;euro;</span> <span class="ni">&amp;mdash;</span> <span class="ni">&amp;copy;</span> 2026 IES Ejemplo <span class="ni">&amp;#128512;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Con <code>UTF-8</code> puedes escribir directamente á, ñ, € o ©; las entidades son imprescindibles solo para <code>&lt;</code>, <code>&gt;</code> y <code>&amp;</code>.</p>
+<section class="callout errores"><h3 id="27-errores-típicos">2.7 Errores típicos</h3>
+<ul>
+<li>Usar <code>&lt;br&gt;&lt;br&gt;</code> para separar párrafos en lugar de dos <code>&lt;p&gt;</code>.</li>
+<li>Elegir <code>h3</code> porque «queda más pequeño».</li>
+<li>Meter un <code>&lt;p&gt;</code> dentro de otro <code>&lt;p&gt;</code> (no está permitido).</li>
+<li>Poner <code>&lt;blockquote&gt;</code> dentro de un <code>&lt;p&gt;</code>: un elemento de bloque no puede ir dentro de un párrafo.</li>
+</ul>
+</section><section class="ejercicios"><h3 id="ejercicios-del-bloque-2">Ejercicios del bloque 2</h3>
+<h4 class="ej" id="e06"><span class="ej-num">E06</span> Ficha biográfica<label class="done"><input type="checkbox" data-ej="E06"> Hecho</label></h4>
+<ol type="1">
+<li>Crea <code>e06-biografia.html</code> con el esqueleto completo.</li>
+<li>Elige una persona de la historia de la informática (Ada Lovelace, Alan Turing, Grace Hopper, Margaret Hamilton…).</li>
+<li>Estructura: <code>h1</code> con su nombre, <code>h2</code> «Biografía», «Aportaciones» y «Curiosidades», y dentro de «Aportaciones» al menos dos <code>h3</code>.</li>
+<li>Escribe al menos 5 párrafos; separa dos secciones con <code>&lt;hr&gt;</code> y usa <code>&lt;br&gt;</code> solo en una dirección postal inventada.</li>
+<li>Valida y comprueba la estructura con la opción <em>Outline</em> del validador.</li>
+</ol>
+<h4 class="ej" id="e07"><span class="ej-num">E07</span> Formato con significado<label class="done"><input type="checkbox" data-ej="E07"> Hecho</label></h4>
+<ol type="1">
+<li>En <code>e07-formato.html</code> escribe H₂O, CO₂, E=mc² y 1.º de DAM con <code>sub</code> y <code>sup</code>.</li>
+<li>Crea una oferta con precio tachado (<code>del</code>) y nuevo (<code>ins</code>).</li>
+<li>Escribe una frase con <code>strong</code> y otra con <code>b</code>, y una con <code>em</code> y otra con <code>i</code>. En un comentario explica la diferencia de significado de cada pareja.</li>
+<li>Resalta con <code>mark</code> una palabra de un párrafo.</li>
+</ol>
+<h4 class="ej" id="e08"><span class="ej-num">E08</span> Citas<label class="done"><input type="checkbox" data-ej="E08"> Hecho</label></h4>
+<ol type="1">
+<li>Añade a tu biografía una cita famosa de esa persona con <code>blockquote</code> y su fuente en <code>cite</code>.</li>
+<li>Añade una cita corta con <code>q</code> dentro de un párrafo.</li>
+<li>Marca dos siglas con <code>abbr</code> (por ejemplo, ENIAC o NASA) y comprueba que aparece el <code>title</code> al pasar el ratón.</li>
+<li>Cierra la página con tus datos de contacto en <code>address</code>.</li>
+</ol>
+<h4 class="ej" id="e09"><span class="ej-num">E09</span> Entidades<label class="done"><input type="checkbox" data-ej="E09"> Hecho</label></h4>
+<p>En <code>e09-entidades.html</code> consigue que el navegador muestre literalmente: <code>&lt;h1&gt;Título&lt;/h1&gt;</code>, «© 2026 Tu nombre», «10 €» sin que se pueda partir y tres emojis.</p>
+<h4 class="ej" id="e10"><span class="ej-num">E10</span> Código<label class="done"><input type="checkbox" data-ej="E10"> Hecho</label></h4>
+<p>En <code>e10-codigo.html</code> muestra un programa Java o Python de al menos 5 líneas con <code>pre</code> + <code>code</code>, respetando la sangría, y explica en un párrafo cómo ejecutarlo usando <code>kbd</code> para las teclas y <code>samp</code> para la salida.</p>
+</section>
+        
+        <nav class="pager" aria-label="Paginación"><a class="pager-prev" href="bloque-1.html"><small>Anterior</small>Estructura y sintaxis</a><a class="pager-next" href="bloque-3.html"><small>Siguiente</small>Primer contacto con CSS</a></nav>
+      </article>
+      <nav class="toc" aria-label="En esta página"><p class="toc-title">En esta página</p><ul><li><a href="#21-títulos-h1-a-h6">2.1 Títulos: h1 a h6</a></li><li><a href="#22-párrafos-saltos-de-línea-y-separadores">2.2 Párrafos, saltos de línea y separadores</a></li><li><a href="#23-formato-de-texto">2.3 Formato de texto</a></li><li><a href="#24-citas-y-referencias">2.4 Citas y referencias</a></li><li><a href="#25-código-informático">2.5 Código informático</a></li><li><a href="#26-entidades-símbolos-y-emojis">2.6 Entidades, símbolos y emojis</a></li><li><a href="#27-errores-típicos">2.7 Errores típicos</a></li><li><a href="#ejercicios-del-bloque-2">Ejercicios del bloque 2</a></li></ul></nav>
+    </div>
+    <footer class="site-foot">
+      <p>Apuntes del módulo Lenguajes de marcas y sistemas de gestión de información, 1.º DAM. Contenidos organizados a partir del <a href="https://www.w3schools.com/html/default.asp">tutorial de HTML de W3Schools</a>.</p>
+    </footer>
+  </main>
+</div>
+<dialog class="try" id="try">
+  <div class="try-head">
+    <h2>Probar el código</h2>
+    <div class="try-actions"><button type="button" id="try-reset">Restaurar</button><button type="button" id="try-close">Cerrar</button></div>
+  </div>
+  <div class="try-body">
+    <textarea id="try-src" spellcheck="false" aria-label="Código HTML editable"></textarea>
+    <iframe id="try-out" title="Resultado" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+  </div>
+</dialog>
+</body>
+</html>

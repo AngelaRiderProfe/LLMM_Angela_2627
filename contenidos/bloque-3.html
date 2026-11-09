@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloque 3 · Primer contacto con los estilos | Guía de HTML</title>
+<meta name="description" content="Apuntes de HTML para el módulo de Lenguajes de marcas y sistemas de gestión de información (1.º DAM).">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilos.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="topbar">
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="sidebar">Menú</button>
+  <a class="brand-mini" href="index.html">&lt;html&gt; LMSGI</a>
+</div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html"><span class="brand-tag">&lt;html&gt;</span><span>Guía de HTML<br><small>LMSGI · 1.º DAM</small></span></a>
+    <nav aria-label="Bloques de la guía"><ol class="nav-list"><li><a href="index.html"><span class="nav-num nav-num--empty"></span><span>Inicio y entorno</span></a></li><li><a href="bloque-0.html"><span class="nav-num">0</span><span>Qué es HTML</span></a></li><li><a href="bloque-1.html"><span class="nav-num">1</span><span>Estructura y sintaxis</span></a></li><li><a href="bloque-2.html"><span class="nav-num">2</span><span>Texto con significado</span></a></li><li><a href="bloque-3.html" aria-current="page"><span class="nav-num">3</span><span>Primer contacto con CSS</span></a></li><li><a href="bloque-4.html"><span class="nav-num">4</span><span>Enlaces, rutas y multimedia</span></a></li><li><a href="bloque-5.html"><span class="nav-num">5</span><span>Listas y tablas</span></a></li><li><a href="bloque-6.html"><span class="nav-num">6</span><span>Semántica y versiones</span></a></li><li><a href="bloque-7.html"><span class="nav-num">7</span><span>Formularios</span></a></li><li><a href="bloque-8.html"><span class="nav-num">8</span><span>Gráficos y primer JavaScript</span></a></li><li><a href="chuleta.html"><span class="nav-num nav-num--empty"></span><span>Chuleta y referencias</span></a></li></ol></nav>
+    <p class="progress" id="progreso" hidden></p>
+  </aside>
+  <main id="contenido" class="main">
+    <header class="page-head"><p class="page-kicker">Bloque 3</p><h1>Primer contacto con los estilos</h1></header>
+    <div class="content-wrap">
+      <article class="content">
+        
+<p>HTML dice <em>qué</em> es cada cosa; CSS (<em>Cascading Style Sheets</em>, hojas de estilo en cascada) dice <em>cómo se ve</em>. Aquí solo aprenderemos a conectar CSS con HTML y a usar <code>class</code> e <code>id</code>; CSS se estudia a fondo en la UT3.</p>
+<h3 id="31-cómo-es-una-regla-css">3.1 Cómo es una regla CSS</h3>
+<figure class="code" data-lang="css"><div class="code-bar"><span class="code-lang">CSS</span><div class="code-tools"><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">navy</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/* selector { propiedad: valor; } */</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Qué cambia</th>
+<th>Ejemplo de valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>color</code></td>
+<td>Color del texto</td>
+<td><code>red</code>, <code>#ff0000</code>, <code>rgb(255, 0, 0)</code></td>
+</tr>
+<tr class="even">
+<td><code>background-color</code></td>
+<td>Color de fondo</td>
+<td><code>lightyellow</code></td>
+</tr>
+<tr class="odd">
+<td><code>font-family</code></td>
+<td>Tipo de letra</td>
+<td><code>Arial, sans-serif</code></td>
+</tr>
+<tr class="even">
+<td><code>font-size</code></td>
+<td>Tamaño de letra</td>
+<td><code>16px</code>, <code>1.2em</code></td>
+</tr>
+<tr class="odd">
+<td><code>text-align</code></td>
+<td>Alineación</td>
+<td><code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code></td>
+</tr>
+<tr class="even">
+<td><code>border</code></td>
+<td>Borde</td>
+<td><code>1px solid black</code></td>
+</tr>
+<tr class="odd">
+<td><code>padding</code> / <code>margin</code></td>
+<td>Espacio interior / exterior</td>
+<td><code>10px</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-colores">3.2 Colores</h3>
+<p>Un mismo color se puede escribir de varias formas:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Forma</th>
+<th>Ejemplo (rojo tomate)</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nombre</td>
+<td><code>tomato</code></td>
+<td>140 nombres predefinidos</td>
+</tr>
+<tr class="even">
+<td>Hexadecimal</td>
+<td><code>#ff6347</code></td>
+<td>Rojo, verde y azul de <code>00</code> a <code>ff</code></td>
+</tr>
+<tr class="odd">
+<td>RGB</td>
+<td><code>rgb(255, 99, 71)</code></td>
+<td>Cada canal de 0 a 255</td>
+</tr>
+<tr class="even">
+<td>RGBA</td>
+<td><code>rgba(255, 99, 71, 0.5)</code></td>
+<td>Igual + transparencia de 0 a 1</td>
+</tr>
+<tr class="odd">
+<td>HSL</td>
+<td><code>hsl(9, 100%, 64%)</code></td>
+<td>Tono (0–360°), saturación y luminosidad</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-tres-formas-de-añadir-css">3.3 Tres formas de añadir CSS</h3>
+<p><strong>1. En línea</strong>, con el atributo global <code>style</code>. Solo afecta a ese elemento.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">"color: tomato; text-align: center;"</span><span class="p">&gt;</span>Mi web<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p><strong>2. Interna</strong>, con el elemento <code>&lt;style&gt;</code> dentro del <code>head</code>. Afecta a toda la página.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nt">h1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">tomato</span><span class="p">;</span><span class="w"> </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">p</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p><strong>3. Externa</strong>, con un archivo <code>.css</code> y el elemento <code>&lt;link&gt;</code> en el <code>head</code>. Afecta a todas las páginas que lo enlacen.</p>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"css/estilos.css"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</code></pre></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Atributo de <code>&lt;link&gt;</code></th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rel</code></td>
+<td>Relación con el documento: <code>stylesheet</code> (hoja de estilos), <code>icon</code> (favicon)</td>
+</tr>
+<tr class="even">
+<td><code>href</code></td>
+<td>Ruta del archivo</td>
+</tr>
+<tr class="odd">
+<td><code>media</code></td>
+<td>Opcional: solo para un tipo de dispositivo (<code>print</code>, <code>screen</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>¿Cuál usar?</strong> La externa, porque separa contenido y presentación: cambias un archivo y cambia todo el sitio, y el navegador lo guarda en caché. Si se aplican varias a la vez, gana la más cercana al elemento: en línea &gt; interna &gt; externa (de ahí lo de «cascada»).</p>
+<h3 id="34-class-e-id">3.4 <code>class</code> e <code>id</code></h3>
+<p>Sirven para «poner nombre» a elementos y poder seleccionarlos desde CSS y JavaScript.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><code>class</code></th>
+<th><code>id</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>¿Se puede repetir?</td>
+<td>Sí, en muchos elementos</td>
+<td><strong>No</strong>, único en la página</td>
+</tr>
+<tr class="even">
+<td>¿Varios por elemento?</td>
+<td>Sí: <code>class="aviso grande"</code></td>
+<td>No, uno solo</td>
+</tr>
+<tr class="odd">
+<td>Selector CSS</td>
+<td><code>.aviso { }</code></td>
+<td><code>#cabecera { }</code></td>
+</tr>
+<tr class="even">
+<td>JavaScript</td>
+<td><code>getElementsByClassName("aviso")</code></td>
+<td><code>getElementById("cabecera")</code></td>
+</tr>
+<tr class="odd">
+<td>Otro uso</td>
+<td>—</td>
+<td>Destino de enlaces internos: <code>href="#cabecera"</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="code" data-lang="html"><div class="code-bar"><span class="code-lang">HTML</span><div class="code-tools"><button type="button" class="btn-try">Probar</button><button type="button" class="btn-copy">Copiar</button></div></div><pre><code><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">destacado</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">lightyellow</span><span class="p">;</span><span class="w"> </span><span class="k">border-left</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">orange</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">#</span><span class="nn">aviso-principal</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">crimson</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"aviso-principal"</span><span class="p">&gt;</span>El plazo de matrícula acaba el viernes.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"destacado"</span><span class="p">&gt;</span>Recuerda traer el DNI.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"destacado"</span><span class="p">&gt;</span>La fotografía debe ser reciente.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></figure>
+<p>Nombres: empiezan por letra, sin espacios ni tildes; usa guiones (<code>aviso-principal</code>). Pon nombres que digan <em>qué es</em> (<code>aviso</code>), no <em>cómo se ve</em> (<code>rojo</code>).</p>
+<section class="callout errores"><h3 id="35-errores-típicos">3.5 Errores típicos</h3>
+<ul>
+<li>Repetir el mismo <code>id</code> en dos elementos (el validador lo marca como error).</li>
+<li>Escribir <code>class=".destacado"</code>: el punto va en el CSS, no en el HTML.</li>
+<li>Ruta de <code>href</code> incorrecta en <code>&lt;link&gt;</code>: la página se ve sin estilos y no da error visible. Mira la pestaña <em>Consola</em> de DevTools.</li>
+<li>Olvidar el <code>;</code> entre propiedades en el atributo <code>style</code>.</li>
+</ul>
+</section><section class="ejercicios"><h3 id="ejercicios-del-bloque-3">Ejercicios del bloque 3</h3>
+<h4 class="ej" id="e11"><span class="ej-num">E11</span> Estilo en línea<label class="done"><input type="checkbox" data-ej="E11"> Hecho</label></h4>
+<ol type="1">
+<li>Copia tu biografía (E06) como <code>e11-estilos.html</code>.</li>
+<li>Con el atributo <code>style</code>, cambia el color del <code>h1</code> usando un nombre, el de los <code>h2</code> usando hexadecimal y el fondo de un párrafo usando <code>rgba</code> con transparencia.</li>
+<li>Centra el <code>h1</code> y cambia el tipo de letra de los párrafos.</li>
+</ol>
+<h4 class="ej" id="e12"><span class="ej-num">E12</span> De línea a interna y a externa<label class="done"><input type="checkbox" data-ej="E12"> Hecho</label></h4>
+<ol type="1">
+<li>Elimina todos los atributos <code>style</code> y lleva esas reglas a un <code>&lt;style&gt;</code> en el <code>head</code>. Comprueba que la página se ve igual.</li>
+<li>Crea <code>css/e12.css</code>, mueve allí las reglas y enlázalo con <code>&lt;link&gt;</code>. Comprueba de nuevo.</li>
+<li>Crea una segunda página que enlace la misma hoja y observa que hereda el estilo.</li>
+<li>Completa en un comentario una tabla con ventajas e inconvenientes de las tres formas.</li>
+</ol>
+<h4 class="ej" id="e13"><span class="ej-num">E13</span> Clases e id<label class="done"><input type="checkbox" data-ej="E13"> Hecho</label></h4>
+<ol type="1">
+<li>Crea la clase <code>.destacado</code> y aplícala a tres párrafos.</li>
+<li>Crea un aviso único con <code>id="aviso-principal"</code> y dale un estilo diferente.</li>
+<li>Aplica a un párrafo dos clases a la vez (<code>destacado</code> y otra nueva).</li>
+<li>Repite a propósito el <code>id</code> en otro elemento, valida y anota el error. Después corrígelo.</li>
+</ol>
+</section>
+        
+        <nav class="pager" aria-label="Paginación"><a class="pager-prev" href="bloque-2.html"><small>Anterior</small>Texto con significado</a><a class="pager-next" href="bloque-4.html"><small>Siguiente</small>Enlaces, rutas y multimedia</a></nav>
+      </article>
+      <nav class="toc" aria-label="En esta página"><p class="toc-title">En esta página</p><ul><li><a href="#31-cómo-es-una-regla-css">3.1 Cómo es una regla CSS</a></li><li><a href="#32-colores">3.2 Colores</a></li><li><a href="#33-tres-formas-de-añadir-css">3.3 Tres formas de añadir CSS</a></li><li><a href="#34-class-e-id">3.4 class e id</a></li><li><a href="#35-errores-típicos">3.5 Errores típicos</a></li><li><a href="#ejercicios-del-bloque-3">Ejercicios del bloque 3</a></li></ul></nav>
+    </div>
+    <footer class="site-foot">
+      <p>Apuntes del módulo Lenguajes de marcas y sistemas de gestión de información, 1.º DAM. Contenidos organizados a partir del <a href="https://www.w3schools.com/html/default.asp">tutorial de HTML de W3Schools</a>.</p>
+    </footer>
+  </main>
+</div>
+<dialog class="try" id="try">
+  <div class="try-head">
+    <h2>Probar el código</h2>
+    <div class="try-actions"><button type="button" id="try-reset">Restaurar</button><button type="button" id="try-close">Cerrar</button></div>
+  </div>
+  <div class="try-body">
+    <textarea id="try-src" spellcheck="false" aria-label="Código HTML editable"></textarea>
+    <iframe id="try-out" title="Resultado" sandbox="allow-scripts allow-forms allow-modals"></iframe>
+  </div>
+</dialog>
+</body>
+</html>
